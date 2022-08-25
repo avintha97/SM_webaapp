@@ -53,6 +53,17 @@ session_start();
     
     <div class="top">
         <h1>Today Power Cuts</h1>
+        
+        <select name="area" id="area" onclick="query(this.value)">
+            <option value="1">A</option>
+            <option value="2">B</option>
+            <option value="3">C</option>
+            <option value="4">D</option>
+            <option value="5">E</option>
+        </select>
+        
+        
+        
         <i class="fas fa-user-cog"></i>
     </div>
     
@@ -78,7 +89,7 @@ session_start();
                 <span >  <i class="fa fa-trash" aria-hidden="true"></i></span>
                 </button>
                 <div class="panel">
-                    <button type="button" id="fullscreen" onclick="fullscreen()">
+                    <button type="button" id="fullscreen" onclick="fullview()">
                   
                 <span >  <i class="fa fa-arrows-alt" aria-hidden="true"></i></span>
                 </button>

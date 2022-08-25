@@ -79,7 +79,7 @@ session_start();
                 <span >  <i class="fa fa-trash" aria-hidden="true"></i></span>
                 </button>
                 <div class="panel">
-                    <button type="button" id="fullscreen" onclick="fullscreen()">
+                    <button type="button" id="fullscreen" onclick="fullview()">
                   
                 <span >  <i class="fa fa-arrows-alt" aria-hidden="true"></i></span>
                 </button>

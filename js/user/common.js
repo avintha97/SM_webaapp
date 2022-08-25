@@ -27,7 +27,7 @@ function mesuredistance(){
 //Area Measure Function
 
 function mesurearea(){
-   
+
     polygon = new ol.interaction.Draw({
         source: source,
         type: "Polygon",
@@ -46,6 +46,9 @@ function mesurearea(){
    
 };
 
+
+
+
 //clear function
 
 function cleardraw(){
@@ -55,3 +58,9 @@ map.removeInteraction(polygon);
 Lyr.getSource().clear();
 
 };
+
+//full screen view
+
+function fullview(){
+    print();
+  };
