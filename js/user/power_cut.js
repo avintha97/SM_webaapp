@@ -1,5 +1,5 @@
 
-       var  url = "http://localhost:8090/iserver/services/map-SUSL_WS/rest/maps/susl_points%40susl_data";
+    var  url = "http://localhost:8090/iserver/services/map-SUSL_WS/rest/maps/susl_points%40susl_data";
     var map = new ol.Map({
         target: 'map',
         controls: ol.control.defaults({attributionOptions: {collapsed: false}})
@@ -30,6 +30,8 @@
 
     map.on('click',dd);
 
-    function dd(e){
-        console.log(e);
-    }
+    //common functions
+
+    
+
+    
