@@ -54,7 +54,7 @@ session_start();
     <div class="top">
         <h1>Today Power Cuts</h1>
         
-        <select name="area" id="area" onclick="query(this.value)">
+        <select name="" id="" onclick="query(this.value)">
             <option value="1">A</option>
             <option value="2">B</option>
             <option value="3">C</option>

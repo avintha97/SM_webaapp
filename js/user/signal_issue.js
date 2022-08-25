@@ -1,5 +1,5 @@
 
-       var  url = "http://localhost:8090/iserver/services/map-SUSL_WS/rest/maps/susl_points%40susl_data";
+       var  url = "http://localhost:8090/iserver/services/map-SUSL_WS/rest/maps/tower_location%40signal_issues";
        var map = new ol.Map({
            target: 'map',
            controls: ol.control.defaults({attributionOptions: {collapsed: false}})
@@ -28,8 +28,4 @@
        map.addLayer(layer1);
        map.addControl(new ol.supermap.control.ScaleLine());
    
-       map.on('click',dd);
-   
-       function dd(e){
-           console.log(e);
-       }
+      

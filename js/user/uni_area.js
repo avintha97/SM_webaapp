@@ -28,8 +28,3 @@
        map.addLayer(layer1);
        map.addControl(new ol.supermap.control.ScaleLine());
    
-       map.on('click',dd);
-   
-       function dd(e){
-           console.log(e);
-       }
