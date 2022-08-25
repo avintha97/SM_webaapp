@@ -1,13 +1,12 @@
-var Lyr;
-var areaLyr;
+var source = new ol.source.Vector({wrapX: false});
+Lyr = new ol.layer.Vector({
+   source: source
+});
+map.addLayer(Lyr);
 var line,polygon;
 //Distance Measure Function
 function mesuredistance(){
-    var source = new ol.source.Vector({wrapX: false});
-     Lyr = new ol.layer.Vector({
-        source: source
-    });
-    map.addLayer(Lyr);
+   
     line = new ol.interaction.Draw({
         source: source,
         type: "LineString"
@@ -28,11 +27,7 @@ function mesuredistance(){
 //Area Measure Function
 
 function mesurearea(){
-    var source = new ol.source.Vector({wrapX: false});
-   var Lyr = new ol.layer.Vector({
-        source: source
-    });
-    map.addLayer(Lyr);
+   
     polygon = new ol.interaction.Draw({
         source: source,
         type: "Polygon",
@@ -54,6 +49,7 @@ function mesurearea(){
 //clear function
 
 function cleardraw(){
+    
 map.removeInteraction(line);
 map.removeInteraction(polygon);
 Lyr.getSource().clear();

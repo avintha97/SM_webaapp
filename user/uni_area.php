@@ -75,7 +75,7 @@ session_start();
                 <span >  <i class="fa fa-window-close" aria-hidden="true"></i></span>
                 </button>
                 <div class="panel">
-                    <button type="button" id="clear" onclick="clear()">
+                    <button type="button" id="clear" onclick="cleardraw()">
                   
                 <span >  <i class="fa fa-trash" aria-hidden="true"></i></span>
                 </button>
@@ -96,6 +96,7 @@ session_start();
 
 
 <script src="../js/user/uni_area.js"></script>
+<script src="../js/user/common.js"></script>
 </body>
 </html>
 <?php
