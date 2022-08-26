@@ -40,28 +40,15 @@ var Style1 = new ol.style.Style({
     radius : 5
     }),
       });
+      var Style2 = new ol.style.Style({
 
-var param = new ol.supermap.QueryBySQLParameters({
-    queryParams: {
-      name: "student_locations@power_cut_data"
-      
-    },
-  });
-  
-  new ol.supermap.QueryService(url1).queryBySQL(param, function (serviceResult) {
-    var vectorSource = new ol.source.Vector({
-      features: new ol.format.GeoJSON().readFeatures(
-        serviceResult.result.recordsets[0].features
-      ),
-      wrapX: false,
-    });
-    //console.log(serviceResult.result.recordsets[0].features);
-    layer1 = new ol.layer.Vector({
-      source: vectorSource,
-      style:Style1
-    });
-    map.addLayer(layer1);
-  });
+        fill : new ol.style.Fill({
+            color:'green'
+        
+        
+        }),
+          });
+
 
 map.addLayer(basemap);
 //map.addLayer(layer1);
@@ -95,6 +82,7 @@ function query(e) {
     
     resultLayer = new ol.layer.Vector({
       source: vectorSource,
+      style:Style2
     });
     map.addLayer(resultLayer);
   });
@@ -108,10 +96,31 @@ if (hour >= 6 && hour <= 8) {
     query(3);
   } else if (hour >= 12 && hour <= 15) {
     query(4);
-  } else if (hour>= 15 && hour <= 18) {
+  } else if (hour>= 15 && hour <= 24) {
     query(5);
   }else{
     //alert("this time no power cut!");
     //query(1);
   }
   
+var param = new ol.supermap.QueryBySQLParameters({
+    queryParams: {
+      name: "student_locations@power_cut_data"
+      
+    },
+  });
+  
+  new ol.supermap.QueryService(url1).queryBySQL(param, function (serviceResult) {
+    var vectorSource = new ol.source.Vector({
+      features: new ol.format.GeoJSON().readFeatures(
+        serviceResult.result.recordsets[0].features
+      ),
+      wrapX: false,
+    });
+    //console.log(serviceResult.result.recordsets[0].features);
+    layer1 = new ol.layer.Vector({
+      source: vectorSource,
+      style:Style1
+    });
+    map.addLayer(layer1);
+  });

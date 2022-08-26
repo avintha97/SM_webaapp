@@ -59,7 +59,8 @@ session_start();
         <div class="cards">
             <i class="fas fa-user"></i>
             <h3>user information</h3>
-            <p>Name</p>
+            
+            <p>Name <h3><?php echo $_SESSION['name']; ?></h3></p>
             <p>Regno</p>
         </div>
         <div class="cards">
