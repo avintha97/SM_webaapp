@@ -19,7 +19,7 @@ session_start();
     
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Power Cuts</title>
+    <title>University Area</title>
 </head>
 <body>
     <div class="container">
@@ -54,7 +54,7 @@ session_start();
 <section class="main">
     
     <div class="top">
-        <h1>Today Power Cuts</h1>
+        <h1>University Area</h1>
         <i class="fas fa-user-cog"></i>
     </div>
     
@@ -96,7 +96,7 @@ session_start();
 
 
 <script src="../js/user/uni_area.js"></script>
-<script src="../js/user/common.js"></script>
+<script src="../js/common.js"></script>
 </body>
 </html>
 <?php

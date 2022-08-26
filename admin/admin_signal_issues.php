@@ -17,8 +17,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
         <link href='https://iclient.supermap.io/dist/ol/iclient-ol.min.css' rel='stylesheet' />
         <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.9.0/build/ol.js"></script>
         <script type="text/javascript" src="https://iclient.supermap.io/dist/ol/iclient-ol.min.js"></script>
-        <link rel="stylesheet" href="../css/admin/admin_powercut.css">
-        <title>Power Cuts</title>
+        <link rel="stylesheet" href="../css/admin/admin_signal_issues.css">
+        <title>Signal Isuues</title>
     </head>
 
     <body>
@@ -37,11 +37,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                             <i class="fas fa-power-off"></i>
                             <span class="nav-item"> Power Cut</span>
                         </a></li>
-                    <li><a href="admin_signal_issues.php">
+                    <li><a href="">
                             <i class="fas fa-wifi"></i>
                             <span class="nav-item">Signal Issues</span>
                         </a></li>
-                    <li><a href="">
+                    <li><a href="detail.php">
                             <i class="fas fa-university"></i>
                             <span class="nav-item">Details</span>
                         </a></li>
@@ -114,6 +114,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                         <option value="18">18GES</option>
                         <option value="19">19GES</option>
                     </select>
+                    <label for="services-use">Type of Data Used </label>
+                    <select name="acdemic_year" id="ac_year">
+                        <option value="1">Wifi Router</option>
+                        <option value="2">Mobile Data</option>
+                        
+                    </select>
                 </div>
 
                 </div>
@@ -124,7 +130,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
 
 
 
-        <script src="../js/admin/admin_powercut.js"></script>
+        <script src="../js/admin/admin_signal_issues.js"></script>
         <script src="../js/common.js"></script>
 
     </body>

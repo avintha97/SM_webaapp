@@ -35,7 +35,7 @@ session_start();
         <i class="fas fa-wifi"></i>
             <span class="nav-item">Today Signal Issues</span>
         </a></li>
-        <li><a href="">
+        <li><a href="uni_area.php">
         <i class="fas fa-university"></i>
             <span class="nav-item">University Area</span>
         </a></li>

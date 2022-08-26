@@ -105,7 +105,7 @@ session_start();
 
 
 <script src="../js/user/power_cut.js"></script>
-<script src="../js/user/common.js"></script>
+<script src="../js/common.js"></script>
 </body>
 </html>
 <?php
