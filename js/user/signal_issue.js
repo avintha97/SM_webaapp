@@ -1,5 +1,6 @@
 
-       var  url = "http://localhost:8090/iserver/services/map-SUSL_WS/rest/maps/tower_location%40signal_issues";
+       var resultLayer;
+       var  url = "http://localhost:8090/iserver/services/map-SUSL_WS/rest/maps/powercut_region%40power_cut_data";
        var map = new ol.Map({
            target: 'map',
            controls: ol.control.defaults({attributionOptions: {collapsed: false}})
@@ -17,15 +18,67 @@
        source : new ol.source.OSM()
       })
    
-       var layer1 = new ol.layer.Tile({
-           source: new ol.source.TileSuperMapRest({
-               url: url,
-               wrapX:true
-           }),
-           projection: 'EPSG:4326'
-       });
+    //    var layer1 = new ol.layer.Tile({
+    //        source: new ol.source.TileSuperMapRest({
+    //            url: url,
+    //            wrapX:true
+    //        }),
+    //        projection: 'EPSG:4326'
+    //    });
        map.addLayer(basemap);
-       map.addLayer(layer1);
+       //map.addLayer(layer1);
        map.addControl(new ol.supermap.control.ScaleLine());
+
+       ///////////////styles/////////////////
+       var Style1 = new ol.style.Style({
+
+        image : new ol.style.Circle({
+            fill : new ol.style.Fill({
+            color:'red'
+            
+        }),
+        
+        radius : 5
+        }),
+          });
+          var Style2 = new ol.style.Style({
+    
+            stroke: new Stroke({
+                color: 'blue',
+                width: 3,
+              }),
+              fill: new Fill({
+                color: 'rgba(0, 0, 255, 0.6)',
+              }),
+              });
+
+       /////////////////////////////////////
    
+      //query function
+
+      function query(e) {
+        map.removeLayer(resultLayer);
+        var param = new ol.supermap.QueryBySQLParameters({
+          queryParams: {
+            name: "powercut_region@power_cut_data#1",
+            attributeFilter: `ID_1 == ${e}`,
+          },
+        });
+      
+        new ol.supermap.QueryService(url).queryBySQL(param, function (serviceResult) {
+          var vectorSource = new ol.source.Vector({
+            features: new ol.format.GeoJSON().readFeatures(
+              serviceResult.result.recordsets[0].features
+            ),
+            wrapX: false,
+          });
+          
+          resultLayer = new ol.layer.Vector({
+            source: vectorSource,
+            style:Style2
+          });
+          map.addLayer(resultLayer);
+        });
+      }
+
       
