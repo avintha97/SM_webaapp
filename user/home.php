@@ -26,7 +26,7 @@ session_start();
             <img src="../img/logo.jpg" alt="">
             <span class=""><?php echo $_SESSION['username']; ?></span>
         </a></li>
-        <li><a href="">
+        <li><a href="home.php">
         <i class="fas fa-user"></i>
             <span class="nav-item">My Profile</span>
         </a></li>
@@ -34,7 +34,7 @@ session_start();
         <i class="fas fa-power-off"></i>
             <span class="nav-item">Today Power Cut</span>
         </a></li>
-        <li><a href="">
+        <li><a href="signal_issue.php">
         <i class="fas fa-wifi"></i>
             <span class="nav-item">Today Signal Issues</span>
         </a></li>

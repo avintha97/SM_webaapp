@@ -51,9 +51,10 @@ session_start();
     </ul>
 </nav>
 <section class="main">
-    
+    <input type="text" id="si_distric" value="<?php echo $_SESSION['district'];?>">
     <div class="top">
         <h1>Signal Issues</h1>
+        <input type="text" id="humidity" value="">
         <select name="" id="" onclick="query(this.value)">
             <option value="1">Ampara</option>
             <option value="2">Anuradapura</option>

@@ -1,4 +1,8 @@
 
+       const district = document.getElementById("si_district").value;
+       const hum_value =document.getElementById("humidity").value;
+       
+       
        var resultLayer;
        var  url = "http://localhost:8090/iserver/services/map-SUSL_WS/rest/maps/powercut_region%40power_cut_data";
        var map = new ol.Map({
@@ -52,7 +56,43 @@
               }),
               });
 
+              var Style3 = new ol.style.Style({
+    
+                stroke: new Stroke({
+                    color: 'red',
+                    width: 3,
+                  }),
+                  fill: new Fill({
+                    color: 'rgba(255, 0, 255, 0.6)',
+                  }),
+                  });
+
        /////////////////////////////////////
+        //get weather
+
+      let weather = {
+        apikey : "2d25e0adccacbedbb6df358d16284d8b",
+        getWeather : function(citiy){
+          fetch("https://api.openweathermap.org/data/2.5/weather?q="+citiy+"&appid="+ this.apikey)
+          .then(response => response.json())
+          .then(data => this.displayWeather(data));
+        },
+      
+        displayWeather : function(data){
+      let {name} = data;
+      let {icon,description} = data.weather[0];
+      let {temp,humidity} = data.main;
+      let {speed} = data.wind;
+      console.log(name,icon,description,temp,humidity,speed);
+      document.getElementById("town").innerText = name;
+      //document.getElementById("icon").src = " http://openweathermap.org/img/wn/"+icon+"2x.png";
+      //document.getElementById("temp").innerText = temp;
+      document.getElementById("humidity").value = humidity;
+      //document.getElementById("speed").innerText = speed;
+      
+        }
+      }
+      /////////////////////////
    
       //query function
 
@@ -72,13 +112,24 @@
             ),
             wrapX: false,
           });
+
+          if(hum_value>50){
+            resultLayer = new ol.layer.Vector({
+              source: vectorSource,
+              style:Style3
+            });
+          }else{
+            resultLayer = new ol.layer.Vector({
+              source: vectorSource,
+              style:Style2
+            });
+          }
           
-          resultLayer = new ol.layer.Vector({
-            source: vectorSource,
-            style:Style2
-          });
+        
           map.addLayer(resultLayer);
         });
       }
 
       
+
+     
