@@ -29,7 +29,7 @@
 		<label>Select Your District</label>
 		<select name="district" id="" >
             <option value="Ampara">Ampara</option>
-            <option value="Anuradapura">Anuradapura</option>
+            <option value="Anuradhapura">Anuradhapura</option>
             <option value="Badulla">Badulla</option>
             <option value="Batticoloa">Batticoloa</option>
             <option value="Colombo">Colombo</option>
@@ -41,7 +41,7 @@
             <option value="Kandy">Kandy</option>
             <option value="Kegalle">Kegalle</option>
             <option value="Kilinochchi">Kilinochchi</option>
-            <option value="Kurunagala">Kurunagala</option>
+            <option value="Kurunegala">Kurunegala</option>
             <option value="Mannar">Mannar</option>
             <option value="Matale">Matale</option>
             <option value="Matara">Matara</option>
