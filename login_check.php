@@ -29,6 +29,7 @@ if(empty($username)){
 
         if($row['username']=== $username && $row['password']===$password && $row['role'] === 'admin'){
             $_SESSION['username'] =$row['username'];
+            $_SESSION['district'] =$row['District'];
             $_SESSION['name'] =$row['name'];
             $_SESSION['password'] =$row['password'];
             $_SESSION['id'] =$row['id'];
@@ -36,6 +37,7 @@ if(empty($username)){
             header("Location:./admin/home.php");
         }else if($row['username']=== $username && $row['password']===$password && $row['role'] === 'user'){
             $_SESSION['username'] =$row['username'];
+            $_SESSION['district'] =$row['District'];
             $_SESSION['name'] =$row['name'];
             $_SESSION['password'] =$row['password'];
             $_SESSION['id'] =$row['id'];

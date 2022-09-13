@@ -5,6 +5,8 @@ const amPm = document.getElementById("ampm");
 const yearEl = document.getElementById("year");
 const monthEl = document.getElementById("month");
 const dayEl = document.getElementById("day");
+const weatherinput = document.getElementById("weather").value;
+console.log(weatherinput);
 
 function updateClock() {
   let h = new Date().getHours();
@@ -38,3 +40,29 @@ function updateClock() {
 updateClock();
 
 
+//weather api 
+
+let weather = {
+  apikey : "2d25e0adccacbedbb6df358d16284d8b",
+  getWeather : function(citiy){
+    fetch("https://api.openweathermap.org/data/2.5/weather?q="+citiy+"&appid="+ this.apikey)
+    .then(response => response.json())
+    .then(data => this.displayWeather(data));
+  },
+
+  displayWeather : function(data){
+let {name} = data;
+let {icon,description} = data.weather[0];
+let {temp,humidity} = data.main;
+let {speed} = data.wind;
+console.log(name,icon,description,temp,humidity,speed);
+document.getElementById("town").innerText = name;
+//document.getElementById("icon").src = " http://openweathermap.org/img/wn/"+icon+"2x.png";
+document.getElementById("temp").innerText = temp;
+document.getElementById("humidity").innerText = humidity;
+document.getElementById("speed").innerText = speed;
+
+  }
+}
+
+weather.getWeather(`${weatherinput}`);

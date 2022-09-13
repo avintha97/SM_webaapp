@@ -1,8 +1,9 @@
 <?php
 session_start();
 
- if(isset($_SESSION['id']) && isset($_SESSION['username'])){
+ if(isset($_SESSION['id']) && isset($_SESSION['username'])) {
 
+    
 ?>
 
 <!DOCTYPE html>
@@ -12,6 +13,8 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/user/user_dashboard.css">
+    <!-- CSS only 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>User Dashboard</title>
 </head>
@@ -39,9 +42,11 @@ session_start();
         <i class="fas fa-university"></i>
             <span class="nav-item">University Area</span>
         </a></li>
-        <li><a href="../logout.php" class="logout">
+        <li>
+        <a href="../logout.php" class="logout">
         <i class="fas fa-sign-out"></i>
            <span class="nav-item">LOG OUT</span>
+           
         </a></li>
     </ul>
    </nav>
@@ -58,10 +63,11 @@ session_start();
         <div class="row">
         <div class="cards">
             <i class="fas fa-user"></i>
-            <h3>user information</h3>
-            
-            <p>Name <h3><?php echo $_SESSION['name']; ?></h3></p>
-            <p>Regno</p>
+            <h3>user information</h3> 
+            <h3><?php echo $_SESSION['username']; ?></h3>
+            <h3><?php echo $_SESSION['name']; ?></h3>
+            <h3><?php echo $_SESSION['role']; ?></h3>
+         <h3><?php echo $_SESSION['district'];?></h3>
         </div>
         <div class="cards">
             <i class="fas fa-clock"></i>
@@ -89,7 +95,12 @@ session_start();
         <div class="cards">
             <i class="fas fa-sun "></i>
             <h3>Weather Forcast</h3>
-            <p>hi welcome</p>
+            <input type="text" value="<?php echo $_SESSION['district'];?>" id="weather" class="form-control">
+            <p id ="town"></p>
+            <img src="" id="icon" alt="">
+            <p id="temp"></p>
+            <p id="humidity"></p>
+            <p id="speed"></p>
         </div>
         <div class="cards">
             <i class="fas fa-calendar"></i>
@@ -118,6 +129,7 @@ session_start();
 
 
 <script src="../js/main.js"></script>
+
 </body>
 </html>
 <?php
