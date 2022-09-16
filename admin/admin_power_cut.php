@@ -31,19 +31,19 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                         </a></li>
                     <li><a href="home.php">
                             <i class="fas fa-user"></i>
-                            <span class="nav-item">Data</span>
+                            <span class="nav-item">Dashboard</span>
                         </a></li>
-                    <li><a href="admin_power_cut.php">
+                    <li><a href="power_cut.php">
                             <i class="fas fa-power-off"></i>
-                            <span class="nav-item"> Power Cut</span>
+                            <span class="nav-item">Today Power Cut</span>
                         </a></li>
-                    <li><a href="admin_signal_issues.php">
+                    <li><a href="signal_issue.php">
                             <i class="fas fa-wifi"></i>
-                            <span class="nav-item">Signal Issues</span>
+                            <span class="nav-item">Today Signal Issues</span>
                         </a></li>
-                    <li><a href="">
+                    <li><a href="uni_area.php">
                             <i class="fas fa-university"></i>
-                            <span class="nav-item">Details</span>
+                            <span class="nav-item">University Area</span>
                         </a></li>
                     <li><a href="../logout.php" class="logout">
                             <i class="fas fa-sign-out"></i>
@@ -53,17 +53,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
             </nav>
             <section class="main">
 
-
                 <div class="top">
                     <h1>Today Power Cuts</h1>
 
-                    <select name="" id="" onclick="query(this.value)">
-                        <option value="1">A</option>
-                        <option value="2">B</option>
-                        <option value="3">C</option>
-                        <option value="4">D</option>
-                        <option value="5">E</option>
-                    </select>
 
 
 
@@ -72,51 +64,62 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
 
                 <div class="body">
                     <div id="map">
-                        <div>
-                            <div class="toolset">
-                                <div class="panel">
-                                    <button type="button" id="distance" onclick="mesuredistance()">
 
-                                        <span> <i class="fa fa-compass" aria-hidden="true"></i></span>
-                                    </button>
-                                </div>
-                                <div class="panel">
-                                    <button type="button" id="area" onclick="mesurearea()">
+                    </div>
+                    <div>
+                        <div class="toolset">
 
-                                        <span> <i class="fa fa-window-close" aria-hidden="true"></i></span>
-                                    </button>
-                                </div>
-                                <div class="panel">
-                                    <button type="button" id="clear" onclick="cleardraw()">
 
-                                        <span> <i class="fa fa-trash" aria-hidden="true"></i></span>
-                                    </button>
-                                </div>
-                                <div class="panel">
-                                    <button type="button" id="fullscreen" onclick="fullview()">
+                            <div class="panel">
 
-                                        <span> <i class="fa fa-arrows-alt" aria-hidden="true"></i></span>
-                                    </button>
-                                </div>
+                                <button type="button" id="distance" onclick="mesuredistance()">
+
+                                    <span> <i class="fa fa-compass" aria-hidden="true"></i></span>
+                                </button>
 
 
 
+                                <button type="button" id="area" onclick="mesurearea()">
 
+                                    <span> <i class="fa fa-window-close" aria-hidden="true"></i></span>
+                                </button>
+
+
+                                <button type="button" id="clear" onclick="cleardraw()">
+
+                                    <span> <i class="fa fa-trash" aria-hidden="true"></i></span>
+                                </button>
+
+
+                                <button type="button" id="fullscreen" onclick="fullview()">
+
+                                    <span> <i class="fa fa-arrows-alt" aria-hidden="true"></i></span>
+                                </button>
 
                             </div>
-                        </div>
-                    </div>
-                    <div class="detail"><h4>hi avintha</h4>
-                    <label for="acedemiv_year">Acedemic_year</label>
-                    <select name="acdemic_year" id="ac_year">
-                        <option value="16">16GES</option>
-                        <option value="17">17GES</option>
-                        <option value="18">18GES</option>
-                        <option value="19">19GES</option>
-                    </select>
-                </div>
+                            <br>
+                            <div class="query">
+                                <label for="">Choose Power Cut Area :</label>
+                                <select name="" class="powercut_area" id="" onclick="query(this.value)">
+                                    <option value="1">A</option>
+                                    <option value="2">B</option>
+                                    <option value="3">C</option>
+                                    <option value="4">D</option>
+                                    <option value="5">E</option>
+                                </select>
+                            </div>
+                            <div class="display_std">
+                            <label for="">Visible Students :</label>
+                            <select name="" class="powercut_area" id="" onclick="query(this.value)">
+                                    <option value="1">A</option>
+                                    <option value="2">B</option>
+                                    <option value="3">C</option>
+                                    <option value="4">D</option>
+                                    <option value="5">E</option>
+                                </select>
+                            </div>
 
-                </div>
+
 
             </section>
         </div>
@@ -124,9 +127,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
 
 
 
-        <script src="../js/admin/admin_powercut.js"></script>
+        <script src="../js/user/power_cut.js"></script>
         <script src="../js/common.js"></script>
-
     </body>
 
     </html>

@@ -5,9 +5,9 @@ const amPm = document.getElementById("ampm");
 const yearEl = document.getElementById("year");
 const monthEl = document.getElementById("month");
 const dayEl = document.getElementById("day");
-const weatherinput = document.getElementById("weather").value;
+//const weatherinput = document.getElementById("weather").value;
 const admin_weatherinput = document.getElementById("weather_query").value;
-console.log(weatherinput);
+//console.log(weatherinput);
 
 function updateClock() {
   let h = new Date().getHours();
@@ -57,15 +57,21 @@ let {icon,description} = data.weather[0];
 let {temp,humidity} = data.main;
 let {speed} = data.wind;
 console.log(name,icon,description,temp,humidity,speed);
-document.getElementById("town").innerText = name;
+document.getElementById("town").innerText ="Location :     " + name;
 //document.getElementById("icon").src = " http://openweathermap.org/img/wn/"+icon+"2x.png";
-document.getElementById("temp").innerText = temp;
-document.getElementById("humidity").innerText = humidity;
-document.getElementById("speed").innerText = speed;
+document.getElementById("temp").innerText = "Temperature : " +temp;
+document.getElementById("humidity").innerText ="Humidity :  "+ humidity;
+document.getElementById("speed").innerText ="Wind Speed :" + speed;
 
   }
 }
 
-weather.getWeather(`${weatherinput}`)
-//weather.getWeather(`${admin_weatherinput}`)
+
+    function weathervalue(value){
+        weather.getWeather(`${value}`);
+    }
+   
+
+    
+
 

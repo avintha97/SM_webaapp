@@ -10,12 +10,10 @@
 }
 
 body{
-    background: #2193b0;  /* fallback for old browsers */
+background: #2193b0;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to right, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-
-    overflow: hidden;
+overflow: hidden;
 }
 
 .container{
@@ -134,12 +132,13 @@ cursor: pointer;
 .body{
     display: flex;
      justify-content: space-evenly;
+     padding-top: 100px;
     
 }
 
 .cards{
     text-align: center;
-    height: 150px;
+    height: 200px;
     width:350px;
     padding: 10px;
     margin: 10px;
@@ -154,19 +153,22 @@ cursor: pointer;
     width: 20px;
 }
 
+.cards h3{
+    padding-bottom: 10px;
+}
 
 
 .clock{
     display: flex;
     margin-right: 40px;
    justify-content: center;
-   
+   padding: 20px;
 
 }
 
 .date{
     display: flex;
-    
+    padding: 20px;
    justify-content: center;
    
 
@@ -233,3 +235,21 @@ cursor: pointer;
     font-size: 20px;
     background: green;
 }
+
+
+
+#weather_query{
+    height: 25px;
+    width: 200px;
+    border-radius: 5px;
+    font-size: 15px;
+    
+
+}
+
+.weatherdata{
+    padding: 10px;
+    font-size: 15px;
+
+}
+

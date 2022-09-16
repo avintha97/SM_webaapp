@@ -120,6 +120,7 @@ a:hover{
     justify-content: space-around;
     width: 100%;
     margin-bottom: 30px;
+    position: relative;
 
 }
 
@@ -133,9 +134,8 @@ cursor: pointer;
 
 #map{
     height: 650px;
-    width: 600px;
+    width: 1200px;
 box-shadow: 0 10px 35px rgba(0,0,0,0.5);
-position: relative;
 
    
 }
@@ -147,24 +147,36 @@ position: relative;
 .toolset{
    position: absolute;
     top: 10px;
-    right: 10px;
+    right: 25px;
     z-index: 1000;
     justify-content: space-evenly;
    
 }
 .panel {
     display: flex;
+    justify-content: space-evenly;
 }
 .panel button {
     padding: 5px;
     margin: 3px;
     padding: 3px;
     cursor: pointer;
+        height: 30px;
+    width: 30px;
+    border-radius: 50%;
 
 }
 
 .detail{
     height: 650px;
     width: 600px;
-    background-color: red;
+    background-color: red
+}
+
+.powercut_area{
+ 
+    
+    height: 30px;
+    width: 35px;
+    border-radius: 10px;
 }

@@ -106,21 +106,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                             </div>
                         </div>
                     </div>
-                    <div class="detail"><h4>hi avintha</h4>
-                    <label for="acedemiv_year">Acedemic_year</label>
-                    <select name="acdemic_year" id="ac_year">
-                        <option value="16">16GES</option>
-                        <option value="17">17GES</option>
-                        <option value="18">18GES</option>
-                        <option value="19">19GES</option>
-                    </select>
-                    <label for="services-use">Type of Data Used </label>
-                    <select name="acdemic_year" id="ac_year">
-                        <option value="1">Wifi Router</option>
-                        <option value="2">Mobile Data</option>
-                        
-                    </select>
-                </div>
+                   
 
                 </div>
 
