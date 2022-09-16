@@ -5,19 +5,37 @@ body {
 	align-items: center;
 	height: 100vh;
 	flex-direction: column;
+	background-image: url("../img/geomatics_login.jpg");
+	background-size: cover;
+	overflow: hidden;
 }
 
-*{
+* {
 	font-family: sans-serif;
 	box-sizing: border-box;
 }
 
 form {
 	width: 500px;
-	border: 2px solid #ccc;
+	border: none;
 	padding: 30px;
-	background: #fff;
+	background: #485563;
+	/* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #29323c, #485563);
+	/* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #29323c, #485563);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 	border-radius: 15px;
+	border: none;
+	opacity: 0.9;
+}
+
+::placeholder {
+	/* Chrome, Firefox, Opera, Safari 10.1+ */
+	color: #D4EDDA;
+	;
+	opacity: 1;
+	/* Firefox */
 }
 
 h2 {
@@ -27,14 +45,17 @@ h2 {
 
 input {
 	display: block;
-	border: 2px solid #ccc;
+	border: none;
 	width: 95%;
 	padding: 10px;
+	color: #D4EDDA;
 	margin: 10px auto;
 	border-radius: 5px;
+	background: rgba(34, 34, 34, 0.6);
 }
+
 label {
-	color: #888;
+	color: #D4EDDA;
 	font-size: 18px;
 	padding: 10px;
 }
@@ -48,17 +69,20 @@ button {
 	margin-right: 10px;
 	border: none;
 }
-button:hover{
+
+button:hover {
 	opacity: .7;
 }
+
 .error {
-   background: #F2DEDE;
-   color: #A94442;
-   padding: 10px;
-   width: 95%;
-   border-radius: 5px;
-   margin: 20px auto;
+	background: #F2DEDE;
+	color: #A94442;
+	padding: 10px;
+	width: 95%;
+	border-radius: 5px;
+	margin: 20px auto;
 }
+
 .success {
 	background: #D4EDDA;
 	color: #40754C;
@@ -66,7 +90,7 @@ button:hover{
 	width: 95%;
 	border-radius: 5px;
 	margin: 20px auto;
- }
+}
 
 h1 {
 	text-align: center;
@@ -83,15 +107,18 @@ a {
 	border: none;
 	text-decoration: none;
 }
-a:hover{
+
+a:hover {
 	opacity: .7;
 }
 
-select{
+select {
 	display: block;
-	border: 2px solid #ccc;
+	border: none;
+	color: #D4EDDA;
 	width: 95%;
 	padding: 10px;
 	margin: 10px auto;
 	border-radius: 5px;
+	background: rgba(34, 34, 34, 0.6);
 }

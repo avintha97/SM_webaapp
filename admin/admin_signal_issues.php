@@ -37,7 +37,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                             <i class="fas fa-power-off"></i>
                             <span class="nav-item"> Power Cut</span>
                         </a></li>
-                    <li><a href="">
+                    <li><a href="admin_signal_issues.php">
                             <i class="fas fa-wifi"></i>
                             <span class="nav-item">Signal Issues</span>
                         </a></li>

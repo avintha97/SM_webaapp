@@ -13,7 +13,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.9.0/css/ol.css" rel="stylesheet" />
     <link href='https://iclient.supermap.io/dist/ol/iclient-ol.min.css' rel='stylesheet' />
-    <link rel="stylesheet" href="../css/user/power_cut.css">
+    <link rel="stylesheet" href="../css/user/signal_issues.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.9.0/build/ol.js"></script>
     <script type="text/javascript" src="https://iclient.supermap.io/dist/ol/iclient-ol.min.js"></script>
     
@@ -51,37 +51,10 @@ session_start();
     </ul>
 </nav>
 <section class="main">
-    <input type="text" id="si_distric" value="<?php echo $_SESSION['district'];?>">
+    
     <div class="top">
         <h1>Signal Issues</h1>
-        <input type="text" id="humidity" value="">
-        <select name="" id="" onclick="query(this.value)">
-            <option value="1">Ampara</option>
-            <option value="2">Anuradapura</option>
-            <option value="3">Badulla</option>
-            <option value="4">Batticoloa</option>
-            <option value="5">Colombo</option>
-            <option value="6">Galle</option>
-            <option value="7">Gampaha</option>
-            <option value="8">Hambantota</option>
-            <option value="9">Jaffna</option>
-            <option value="10">Kaluthara</option>
-            <option value="11">Kandy</option>
-            <option value="12">Kegalle</option>
-            <option value="13">Kilinochchi</option>
-            <option value="14">Kurunagala</option>
-            <option value="15">Mannar</option>
-            <option value="16">Matale</option>
-            <option value="17">Matara</option>
-            <option value="18">Monaragala</option>
-            <option value="19">Mullativu</option>
-            <option value="20">Nuwara Eliya</option>
-            <option value="21">Polonnaruwa</option>
-            <option value="22">Puttalam</option>
-            <option value="23">Rathnapura</option>
-            <option value="24">Trincomalee</option>
-            <option value="25">Vavunia</option>
-        </select>
+
         <i class="fas fa-user-cog"></i>
     </div>
     

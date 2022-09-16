@@ -5,22 +5,31 @@ body {
 	align-items: center;
 	height: 100vh;
 	flex-direction: column;
-	background: #a8ff78;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #78ffd6, #a8ff78);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #78ffd6, #a8ff78); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background-image: url("../img/geomatics_login.jpg");
+	background-size: cover;
+	overflow: hidden;
+	
 
 }
 
-*{
+* {
 	font-family: sans-serif;
 	box-sizing: border-box;
 }
 
 form {
 	width: 500px;
-	border: 2px solid #ccc;
+	border: none;
 	padding: 30px;
-	background: #fff;
+	background: #485563;
+	/* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #29323c, #485563);
+	/* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #29323c, #485563);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+	opacity: 0.9;
 	border-radius: 15px;
 }
 
@@ -28,17 +37,25 @@ h2 {
 	text-align: center;
 	margin-bottom: 40px;
 }
-
+::placeholder {
+	/* Chrome, Firefox, Opera, Safari 10.1+ */
+	color: #D4EDDA;
+	;
+	opacity: 1;
+	/* Firefox */
+}
 input {
 	display: block;
-	border: 2px solid #ccc;
+	border: none;
 	width: 95%;
 	padding: 10px;
 	margin: 10px auto;
 	border-radius: 5px;
+	background: rgba(34, 34, 34, 0.6);
 }
+
 label {
-	color: #888;
+	color: #fff;
 	font-size: 18px;
 	padding: 10px;
 }
@@ -52,16 +69,18 @@ button {
 	margin-right: 10px;
 	border: none;
 }
-button:hover{
+
+button:hover {
 	opacity: .7;
 }
+
 .error {
-   background: #F2DEDE;
-   color: #A94442;
-   padding: 10px;
-   width: 95%;
-   border-radius: 5px;
-   margin: 20px auto;
+	background: #F2DEDE;
+	color: #A94442;
+	padding: 10px;
+	width: 95%;
+	border-radius: 5px;
+	margin: 20px auto;
 }
 
 h1 {
@@ -79,14 +98,16 @@ a {
 	border: none;
 	text-decoration: none;
 }
-a:hover{
+
+a:hover {
 	opacity: .7;
 }
 
-select{
+select {
 	display: block;
-	border: 2px solid #ccc;
+	border:none;
 	width: 95%;
+
 	padding: 10px;
 	margin: 10px auto;
 	border-radius: 5px;

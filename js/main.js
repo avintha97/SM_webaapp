@@ -6,7 +6,7 @@ const yearEl = document.getElementById("year");
 const monthEl = document.getElementById("month");
 const dayEl = document.getElementById("day");
 const weatherinput = document.getElementById("weather").value;
-const admin_weatherinput = document.getElementById("weather_query").value;
+//const admin_weatherinput = document.getElementById("weather_query").value;
 console.log(weatherinput);
 
 function updateClock() {

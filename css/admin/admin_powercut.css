@@ -147,7 +147,7 @@ box-shadow: 0 10px 35px rgba(0,0,0,0.5);
 .toolset{
    position: absolute;
     top: 10px;
-    right: 25px;
+    right: 80px;
     z-index: 1000;
     justify-content: space-evenly;
    
@@ -174,8 +174,6 @@ box-shadow: 0 10px 35px rgba(0,0,0,0.5);
 }
 
 .powercut_area{
- 
-    
     height: 30px;
     width: 35px;
     border-radius: 10px;

@@ -33,11 +33,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                             <i class="fas fa-user"></i>
                             <span class="nav-item">Dashboard</span>
                         </a></li>
-                    <li><a href="power_cut.php">
+                    <li><a href="admin_power_cut.php">
                             <i class="fas fa-power-off"></i>
                             <span class="nav-item">Today Power Cut</span>
                         </a></li>
-                    <li><a href="signal_issue.php">
+                    <li><a href="admin_signal_issues.php">
                             <i class="fas fa-wifi"></i>
                             <span class="nav-item">Today Signal Issues</span>
                         </a></li>

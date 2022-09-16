@@ -27,7 +27,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                             <img src="../img/logo.jpg" alt="">
                             <span class=""><?php echo $_SESSION['username']; ?></span>
                         </a></li>
-                    <li><a href="">
+                    <li><a href="home.php">
                             <i class="fas fa-user"></i>
                             <span class="nav-item">Dashboard</span>
                         </a></li>

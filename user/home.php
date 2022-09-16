@@ -21,10 +21,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
     </head>
 
     <body>
+    
         <div class="container">
-            <nav>
+        
+            <nav id="nav" >
+            <button id="colapse">collapse</button>
                 <ul>
                     <li><a href="" class="logo">
+                        
                             <img src="../img/logo.jpg" alt="">
                             <span class=""><?php echo $_SESSION['username']; ?></span>
                         </a></li>
@@ -132,6 +136,28 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
 
 
         <script src="../js/main.js"></script>
+        <script>
+           
+           colapse.addEventListener("click",function(e){
+            const colapse = document.getElementById("colapse");
+           const close = document.getElementById("close");
+           const colapsevalue = colapse.getAttribute("id");
+           const closevalue = close.getAttribute("id");
+           console.log(colapsevalue);
+            e.preventDefault();
+           if(closevalue =="close" ){
+            document.getElementById("nav").style.width = 280;
+            close.setAttribute("id","colapse");
+           }else{
+            document.getElementById("nav").style.width = 0;
+            document.getElementById("colapse").style.position ="fixed";
+            colapse.setAttribute("id","close"); 
+           }
+           
+
+           })
+
+        </script>
 
     </body>
 
