@@ -78,6 +78,8 @@ function query(e) {
       wrapX: false,
     });
 
+    console.log(serviceResult.result.recordsets[0].features);
+
     resultLayer = new ol.layer.Vector({
       source: vectorSource,
       style: Style2,

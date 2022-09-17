@@ -1,4 +1,4 @@
-* {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -52,7 +52,7 @@ nav {
 
 .logo span {
     max-width: 280px;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 .profile-img {
@@ -106,10 +106,12 @@ nav .fas {
 }
 
 a:hover {
-    background: #eee;
+    background: rgb(40, 40, 40);
 
 }
-
+nav ul li {
+    padding-bottom: 60px;
+}
 .logout {
     position: absolute;
     bottom: 0;
@@ -145,7 +147,7 @@ a:hover {
 
 }
 
-.cards {
+/* .cards {
     text-align: center;
     height: 150px;
     width: 350px;
@@ -160,11 +162,11 @@ a:hover {
 .cards i {
     height: 20px;
     width: 20px;
-}
+} */
 
 
 
-.clock {
+/* .clock {
     display: flex;
     margin-right: 40px;
     justify-content: center;
@@ -244,4 +246,194 @@ a:hover {
     height: 30px;
     font-size: 20px;
     background: green;
+} */ 
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    font-family: sans-serif;
+
+}
+
+body {
+    background-image: url("../../img/geomatics.jpg");
+    background-size: cover;
+    overflow: hidden;
+
+
+}
+
+.container {
+    display: flex;
+
+}
+
+nav {
+    position: relative;
+    top: 0;
+    bottom: 0;
+    height: 100vh;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+
+    max-width: 280px;
+    overflow: hidden;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+
+}
+
+.logo img {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    margin-left: 60px;
+    margin-bottom: 20px;
+
+}
+
+.logo span {
+    max-width: 280px;
+    font-size: 20px;
+}
+
+.profile-img {
+    height: 300px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.profile-img img {
+
+    max-width: 250px;
+    max-height: 250px;
+    border-radius: 50%;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
+}
+
+nav ul li {
+    padding-bottom: 60px;
+}
+
+a {
+    position: relative;
+    color: rgb(245, 223, 174);
+    font-size: 14px;
+    display: table;
+    width: 280px;
+    padding: 10px;
+
+}
+
+nav .fas {
+    position: relative;
+    width: 70px;
+    height: 40px;
+    top: 14px;
+    font-size: 20px;
+    text-align: center;
+
+}
+
+.nav-item {
+    position: relative;
+    top: 12px;
+
+
+
+}
+
+a:hover {
+    background: rgb(40, 40, 40);
+
+}
+
+.logout {
+    position: absolute;
+    bottom: 0;
+
+}
+
+.main {
+    position: relative;
+    padding: 20px;
+    width: 100%;
+
+}
+
+.top {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 30px;
+
+}
+
+.top i {
+    position: absolute;
+    right: 0;
+    margin: 10px 30px;
+    color: rgb(11, 109, 109);
+    cursor: pointer;
+}
+
+#map {
+    height: 650px;
+    width: 1200px;
+    opacity: 0.8;
+
+}
+
+.ol-layer canvas {
+    background-color: rgba(59, 59, 59, 0.8);
+}
+
+.toolset {
+    position: absolute;
+    top: 100px;
+    right: 100px;
+    z-index: 1000;
+    justify-content: space-evenly;
+
+}
+
+.panel {
+    display: flex;
+    justify-content: space-evenly;
+}
+.panel {
+    display: flex;
+    justify-content: space-evenly;
+}
+.panel button {
+    padding: 5px;
+    margin: 3px;
+    padding: 3px;
+    cursor: pointer;
+        height: 30px;
+    width: 30px;
+    border-radius: 50%;
+
+}
+
+
+.panel button {
+    padding: 5px;
+    margin: 3px;
+    padding: 3px;
+    cursor: pointer;
+
 }

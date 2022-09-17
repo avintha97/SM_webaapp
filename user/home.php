@@ -21,42 +21,54 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
     </head>
 
     <body>
-    
-        <div class="container">
-        
-            <nav id="nav" >
-            <button id="colapse">collapse</button>
-                <ul>
-                    <li><a href="" class="logo">
-                        
-                            <img src="../img/logo.jpg" alt="">
-                            <span class=""><?php echo $_SESSION['username']; ?></span>
-                        </a></li>
-                    <li><a href="home.php">
-                            <i class="fas fa-user"></i>
-                            <span class="nav-item">My Profile</span>
-                        </a></li>
-                    <li><a href="power_cut.php">
-                            <i class="fas fa-power-off"></i>
-                            <span class="nav-item">Today Power Cut</span>
-                        </a></li>
-                    <li><a href="signal_issue.php">
-                            <i class="fas fa-wifi"></i>
-                            <span class="nav-item">Today Signal Issues</span>
-                        </a></li>
-                    <li><a href="uni_area.php">
-                            <i class="fas fa-university"></i>
-                            <span class="nav-item">University Area</span>
-                        </a></li>
-                    <li>
-                        <a href="../logout.php" class="logout">
-                            <i class="fas fa-sign-out"></i>
-                            <span class="nav-item">LOG OUT</span>
 
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+        <div class="container">
+
+            <div class="sidebar">
+
+                <input type="checkbox" name="" class="check" id="check">
+                <label for="check">
+                    <span class="fa fa-times" id="times" class="tog-span"></span>
+                    <span class="fa fa-bars" id="bars" class="tog-span"></span>
+                </label>
+
+                <nav id="nav">
+
+
+                    <ul>
+
+                        <li><a href="" class="logo">
+
+                                <img src="../img/logo.jpg" alt="">
+                                <span class=""><?php echo $_SESSION['username']; ?></span>
+                            </a></li>
+                        <li><a href="home.php">
+                                <i class="fas fa-user"></i>
+                                <span class="nav-item">My Profile</span>
+                            </a></li>
+                        <li><a href="power_cut.php">
+                                <i class="fas fa-power-off"></i>
+                                <span class="nav-item">Today Power Cut</span>
+                            </a></li>
+                        <li><a href="signal_issue.php">
+                                <i class="fas fa-wifi"></i>
+                                <span class="nav-item">Today Signal Issues</span>
+                            </a></li>
+                        <li><a href="uni_area.php">
+                                <i class="fas fa-university"></i>
+                                <span class="nav-item">University Area</span>
+                            </a></li>
+                        <li>
+                            <a href="../logout.php" class="logout">
+                                <i class="fas fa-sign-out"></i>
+                                <span class="nav-item">LOG OUT</span>
+
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
             <section class="main">
 
                 <div class="top">
@@ -71,10 +83,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                         <div class="cards">
                             <i class="fas fa-user"></i>
                             <h3>user information</h3>
-                            <h3><?php echo $_SESSION['username']; ?></h3>
-                            <h3><?php echo $_SESSION['name']; ?></h3>
-                            <h3><?php echo $_SESSION['role']; ?></h3>
-                            <h3><?php echo $_SESSION['district']; ?></h3>
+                            <div class="user_data">
+                                <h4>User Name : <?php echo $_SESSION['username']; ?></h4>
+                                <h4>Name :<?php echo $_SESSION['name']; ?></h4>
+                                <h4>User Role :<?php echo $_SESSION['role']; ?></h4>
+                                <h4>Location : <?php echo $_SESSION['district']; ?></h4>
+                            </div>
+
                         </div>
                         <div class="cards">
                             <i class="fas fa-clock"></i>
@@ -103,11 +118,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                             <i class="fas fa-sun "></i>
                             <h3>Weather Forcast</h3>
                             <input type="text" value="<?php echo $_SESSION['district']; ?>" id="weather" class="form-control">
-                            <p id="town"></p>
-                            <img src="" id="icon" alt="">
-                            <p id="temp"></p>
-                            <p id="humidity"></p>
-                            <p id="speed"></p>
+                            <div class="weatherdata">
+                                <div id="town"></div>
+                                <div id="temp"></div>
+                                <div id="humidity"></div>
+                                <div id="speed"></div>
+                            </div>
                         </div>
                         <div class="cards">
                             <i class="fas fa-calendar"></i>
@@ -137,26 +153,24 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
 
         <script src="../js/main.js"></script>
         <script>
-           
-           colapse.addEventListener("click",function(e){
-            const colapse = document.getElementById("colapse");
-           const close = document.getElementById("close");
-           const colapsevalue = colapse.getAttribute("id");
-           const closevalue = close.getAttribute("id");
-           console.log(colapsevalue);
-            e.preventDefault();
-           if(closevalue =="close" ){
-            document.getElementById("nav").style.width = 280;
-            close.setAttribute("id","colapse");
-           }else{
-            document.getElementById("nav").style.width = 0;
-            document.getElementById("colapse").style.position ="fixed";
-            colapse.setAttribute("id","close"); 
-           }
-           
+            colapse.addEventListener("click", function(e) {
+                const colapse = document.getElementById("colapse");
+                const close = document.getElementById("close");
+                const colapsevalue = colapse.getAttribute("id");
+                const closevalue = close.getAttribute("id");
+                console.log(colapsevalue);
+                e.preventDefault();
+                if (closevalue == "close") {
+                    document.getElementById("nav").style.width = 280;
+                    close.setAttribute("id", "colapse");
+                } else {
+                    document.getElementById("nav").style.width = 0;
+                    document.getElementById("colapse").style.position = "fixed";
+                    colapse.setAttribute("id", "close");
+                }
 
-           })
 
+            })
         </script>
 
     </body>

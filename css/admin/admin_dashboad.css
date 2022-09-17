@@ -10,15 +10,23 @@
 }
 
 body{
-background: #2193b0;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background-image: url("../../img/compass.jpg");
+background-size:cover;
+
 overflow: hidden;
 }
 
 .container{
     display: flex;
     
+}
+.row_h1{
+    padding-left: 450px;
+    padding-top: 50px;
+    font-size: 40px;
+    text-transform: uppercase;
+    color: red;
+    font-family: Noto-serif;
 }
 
 nav{
@@ -27,10 +35,13 @@ nav{
     bottom: 0;
     height: 100vh;
     left: 0;
-    background:#fff;
+    background: rgba(0, 0, 0, 0.8);
     max-width: 280px;
     overflow: hidden;
     box-shadow: 0 20px 35px rgba(0,0,0,0.2);
+}
+nav ul li {
+    padding-bottom: 60px;
 }
 
 .logo{
@@ -71,11 +82,11 @@ text-align: center;
 
 a{
     position: relative;
-    color: rgb(85, 83, 83);
-    font-size: 14px;
-    display: table;
-    width: 280px;
-    padding: 10px;
+     color: rgb(245, 223, 174);
+     font-size: 14px;
+     display: table;
+     width: 280px;
+     padding: 10px;
 
 }
 
@@ -97,7 +108,7 @@ top: 12px;
 }
 
 a:hover{
-    background: #eee;
+    background: rgb(40, 40, 40);
 
 }
 .logout{
@@ -138,14 +149,15 @@ cursor: pointer;
 
 .cards{
     text-align: center;
-    height: 200px;
-    width:350px;
+    height: 170px;
+    width: 350px;
     padding: 10px;
     margin: 10px;
-    
+    color: #fff;
+    background-color: rgba(46, 45, 45, 0.8);
     margin-bottom: 40px;
     border-radius: 30px;
-    box-shadow: 0 20px 35px rgba(0,0,0,0.2);
+    box-shadow: 0 20px 35px rgba(10, 0, 0, 0.6);
 }
 
 .cards i{
@@ -186,26 +198,26 @@ cursor: pointer;
 .clock span{
     width: 60px;
     height: 40px;
-    background-color: slateblue;
+    background-color: rgb(54, 54, 55);
     opacity: 0.8;
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0,0, 0.3);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 .date span{
     width: 60px;
-    height: 40px;
-    background-color: slateblue;
-    opacity: 0.8;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0,0, 0.3);
+     height: 40px;
+     background-color: rgb(54, 54, 55);
+     opacity: 0.8;
+     color: white;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     font-size: 20px;
+     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .clock .text{
@@ -213,17 +225,16 @@ cursor: pointer;
     font-size: 6px;
     text-transform: uppercase;
     letter-spacing: 2px;
-    background: darkblue;
+    background: rgb(2, 2, 2);
     opacity: 0.8;
-
 }
 .date .text{
     height: 10px;
-    font-size: 6px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    background: darkblue;
-    opacity: 0.8;
+     font-size: 6px;
+     text-transform: uppercase;
+     letter-spacing: 2px;
+     background: rgb(2, 2, 2);
+     opacity: 0.8;
 
 }
 
@@ -233,8 +244,9 @@ cursor: pointer;
     width: 60px;
     height: 30px;
     font-size: 20px;
-    background: green;
+    background: rgb(11, 11, 11);
 }
+
 
 
 

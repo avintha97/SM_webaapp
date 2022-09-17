@@ -15,7 +15,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
         <link rel="stylesheet" href="../css/admin/admin_dashboad.css">
         <!-- CSS only -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital@1&display=swap" rel="stylesheet">
         <title>User Dashboard</title>
     </head>
 
@@ -41,7 +43,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                         </a></li>
                     <li><a href="">
                             <i class="fas fa-university"></i>
-                            <span class="nav-item">Details</span>
+                            <span class="nav-item">Students Feedbacks</span>
                         </a></li>
                     <li><a href="../logout.php" class="logout">
                             <i class="fas fa-sign-out"></i>

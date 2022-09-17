@@ -13,7 +13,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.9.0/css/ol.css" rel="stylesheet" />
     <link href='https://iclient.supermap.io/dist/ol/iclient-ol.min.css' rel='stylesheet' />
-    <link rel="stylesheet" href="../css/user/power_cut.css">
+    <link rel="stylesheet" href="../css/user/uni_area.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.9.0/build/ol.js"></script>
     <script type="text/javascript" src="https://iclient.supermap.io/dist/ol/iclient-ol.min.js"></script>
     

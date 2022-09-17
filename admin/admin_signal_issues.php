@@ -31,7 +31,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                         </a></li>
                     <li><a href="home.php">
                             <i class="fas fa-user"></i>
-                            <span class="nav-item">Data</span>
+                            <span class="nav-item">Dashboard</span>
                         </a></li>
                     <li><a href="admin_power_cut.php">
                             <i class="fas fa-power-off"></i>
@@ -43,7 +43,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                         </a></li>
                     <li><a href="detail.php">
                             <i class="fas fa-university"></i>
-                            <span class="nav-item">Details</span>
+                            <span class="nav-item">Student Feedback</span>
                         </a></li>
                     <li><a href="../logout.php" class="logout">
                             <i class="fas fa-sign-out"></i>
@@ -55,15 +55,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
 
 
                 <div class="top">
-                    <h1>Today Power Cuts</h1>
+                    <h1>SIgnal Isuues</h1>
 
-                    <select name="" id="" onclick="query(this.value)">
-                        <option value="1">A</option>
-                        <option value="2">B</option>
-                        <option value="3">C</option>
-                        <option value="4">D</option>
-                        <option value="5">E</option>
-                    </select>
+
 
 
 
@@ -79,34 +73,62 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
 
                                         <span> <i class="fa fa-compass" aria-hidden="true"></i></span>
                                     </button>
-                                </div>
-                                <div class="panel">
+
+
                                     <button type="button" id="area" onclick="mesurearea()">
 
                                         <span> <i class="fa fa-window-close" aria-hidden="true"></i></span>
                                     </button>
-                                </div>
-                                <div class="panel">
+
+
                                     <button type="button" id="clear" onclick="cleardraw()">
 
                                         <span> <i class="fa fa-trash" aria-hidden="true"></i></span>
                                     </button>
-                                </div>
-                                <div class="panel">
+
+
                                     <button type="button" id="fullscreen" onclick="fullview()">
 
                                         <span> <i class="fa fa-arrows-alt" aria-hidden="true"></i></span>
                                     </button>
                                 </div>
 
-
-
+                                <div class="query">
+                                <label for="">Choose signal levels :</label>
+                                <select name="district" id="weather_query" class="signal-query" onclick="signalval(this.value)">
+                                    <option value="Ampara">Ampara</option>
+                                    <option value="Anuradhapura">Anuradhapura</option>
+                                    <option value="Badulla">Badulla</option>
+                                    <option value="Batticoloa">Batticoloa</option>
+                                    <option value="Colombo">Colombo</option>
+                                    <option value="Galle">Galle</option>
+                                    <option value="Gampaha">Gampaha</option>
+                                    <option value="Hambantota">Hambantota</option>
+                                    <option value="Jaffna">Jaffna</option>
+                                    <option value="Kaluthara">Kaluthara</option>
+                                    <option value="Kandy">Kandy</option>
+                                    <option value="Kegalle">Kegalle</option>
+                                    <option value="Kilinochchi">Kilinochchi</option>
+                                    <option value="Kurunegala">Kurunegala</option>
+                                    <option value="Mannar">Mannar</option>
+                                    <option value="Matale">Matale</option>
+                                    <option value="Matara">Matara</option>
+                                    <option value="Monaragala">Monaragala</option>
+                                    <option value="Mullativu">Mullativu</option>
+                                    <option value="NuwaraEliya">Nuwara Eliya</option>
+                                    <option value="Polonnaruwa">Polonnaruwa</option>
+                                    <option value="Puttalam">Puttalam</option>
+                                    <option value="Rathnapura">Rathnapura</option>
+                                    <option value="Trincomalee">Trincomalee</option>
+                                    <option value="Vavunia">Vavunia</option>
+                                </select>
+                                </div>
 
 
                             </div>
                         </div>
                     </div>
-                   
+
 
                 </div>
 
@@ -118,6 +140,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
 
         <script src="../js/admin/admin_signal_issues.js"></script>
         <script src="../js/common.js"></script>
+        <script src="../js/admin-signal.js"></script>
 
     </body>
 
