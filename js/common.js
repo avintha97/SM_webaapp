@@ -1,8 +1,8 @@
 var source = new ol.source.Vector({wrapX: false});
-Lyr = new ol.layer.Vector({
+var Lyr = new ol.layer.Vector({
    source: source
 });
-map.addLayer(Lyr);
+//map.addLayer(Lyr);
 var line,polygon;
 //Distance Measure Function
 function mesuredistance(){

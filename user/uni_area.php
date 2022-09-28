@@ -26,7 +26,7 @@ session_start();
         <nav>
             <ul>
                 <li><a href="" class="logo">
-                    <img src="../img/logo.jpg" alt="">
+                    <img src="../img/user.png" alt="">
                     <span class=""><?php echo $_SESSION['username']; ?></span>
                 </a></li>
                 <li><a href="home.php">

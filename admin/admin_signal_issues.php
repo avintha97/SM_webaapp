@@ -26,7 +26,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
             <nav>
                 <ul>
                     <li><a href="" class="logo">
-                            <img src="../img/logo.jpg" alt="">
+                            <img src="../img/admin-pc.png" alt="">
                             <span class=""><?php echo $_SESSION['username']; ?></span>
                         </a></li>
                     <li><a href="home.php">

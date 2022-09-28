@@ -1,14 +1,16 @@
+const username = document.getElementById("uname").innerText;
+console.log(username);
+
 var resultLayer;
+
 
 var url =
   "http://localhost:8090/iserver/services/map-SUSL_WS/rest/maps/powercut_region%40power_cut_data";
-var url1 =
-  "http://localhost:8090/iserver/services/map-SUSL_WS/rest/maps/powercut_region%40power_cut_data1";
+var student_loc =
+  "http://localhost:8090/iserver/services/map-SUSL_WS/rest/maps/st_loc%40st_location";
 var map = new ol.Map({
   target: "map",
-  controls: ol.control
-    .defaults({ attributionOptions: { collapsed: false } })
-    .extend([new ol.supermap.control.Logo()]),
+  
   view: new ol.View({
     center: [80.15, 7.95],
     zoom: 7,
@@ -103,23 +105,30 @@ if (hour >= 6 && hour <= 8) {
   //query(1);
 }
 
-var param = new ol.supermap.QueryBySQLParameters({
-  queryParams: {
-    name: "student_locations@power_cut_data",
-  },
-});
+function st_loc(e){
+  var param = new ol.supermap.QueryBySQLParameters({
+    queryParams: {
+      name: "st_loc@st_location",
+      attributeFilter: "indexno = '" + e + "'",
+    },
+  });
+  
+  new ol.supermap.QueryService(student_loc).queryBySQL(param, function (serviceResult) {
+    var vectorSource = new ol.source.Vector({
+      features: new ol.format.GeoJSON().readFeatures(
+        serviceResult.result.recordsets[0].features
+      ),
+      wrapX: false,
+    });
+    //console.log(serviceResult.result.recordsets[0].features);
+    layer1 = new ol.layer.Vector({
+      source: vectorSource,
+      style: Style1,
+    });
+    map.addLayer(layer1);
+  });
+}
 
-new ol.supermap.QueryService(url1).queryBySQL(param, function (serviceResult) {
-  var vectorSource = new ol.source.Vector({
-    features: new ol.format.GeoJSON().readFeatures(
-      serviceResult.result.recordsets[0].features
-    ),
-    wrapX: false,
-  });
-  //console.log(serviceResult.result.recordsets[0].features);
-  layer1 = new ol.layer.Vector({
-    source: vectorSource,
-    style: Style1,
-  });
-  map.addLayer(layer1);
-});
+
+st_loc(username)
+

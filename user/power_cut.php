@@ -24,8 +24,9 @@ session_start();
         <nav>
             <ul>
                 <li><a href="" class="logo">
-                    <img src="../img/logo.jpg" alt="">
-                    <span class=""><?php echo $_SESSION['username']; ?></span>
+                    <img src="../img/user.png" alt="">
+                    <span class="" id="uname"><?php echo $_SESSION['username']; ?></span>
+                    <span id="district_value"><?php echo $_SESSION['district']; ?></span>
                 </a></li>
                 <li><a href="home.php">
                     <i class="fas fa-user"></i>

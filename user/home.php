@@ -26,11 +26,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
 
             <div class="sidebar">
 
-                <input type="checkbox" name="" class="check" id="check">
+                <!-- <input type="checkbox" name="" class="check" id="check">
                 <label for="check">
                     <span class="fa fa-times" id="times" class="tog-span"></span>
                     <span class="fa fa-bars" id="bars" class="tog-span"></span>
-                </label>
+                </label> -->
 
                 <nav id="nav">
 
@@ -39,8 +39,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
 
                         <li><a href="" class="logo">
 
-                                <img src="../img/logo.jpg" alt="">
+                                <img src="../img/user.png" alt="">
                                 <span class=""><?php echo $_SESSION['username']; ?></span>
+                                <span id="district_value"><?php echo $_SESSION['district']; ?></span>
                             </a></li>
                         <li><a href="home.php">
                                 <i class="fas fa-user"></i>
@@ -76,7 +77,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                     <i class="fas fa-user-cog"></i>
                 </div>
                 <div class="profile-img">
-                    <img src="../img/logo.jpg" alt="">
+                    <img src="../img/user.png" alt="">
                 </div>
                 <div class="body">
                     <div class="row">

@@ -1,117 +1,52 @@
-// const hourEl = document.getElementById("hour");
-// const minuteEl = document.getElementById("minutes");
-// const secondEl = document.getElementById("seconds");
-// const amPm = document.getElementById("ampm");
-// const yearEl = document.getElementById("year");
-// const monthEl = document.getElementById("month");
-// const dayEl = document.getElementById("day");
-// //const weatherinput = document.getElementById("weather").value;
-// const admin_weatherinput = document.getElementById("weather_query").value;
-// //console.log(weatherinput);
-
-// function updateClock() {
-//   let h = new Date().getHours();
-//   let m = new Date().getMinutes();
-//   let s = new Date().getSeconds();
-
-//   let ampm = "AM";
-
-//   if (h > 12) {
-//     h = h - 12;
-//     ampm = "PM";
-//   }
-
-//   h = h < 10 ? "0" + h : h;
-//   m = m < 10 ? "0" + m : m;
-//   s = s < 10 ? "0" + s : s;
-
-//   hourEl.innerText = h;
-//   minuteEl.innerText = m;
-//   secondEl.innerText = s;
-//   amPm.innerHTML = ampm;
-//   yearEl.innerHTML = new Date().getFullYear();
-//   monthEl.innerHTML = new Date().getMonth();
-//   dayEl.innerHTML = new Date().getDate();
-
-//   setTimeout(() => {
-//     updateClock();
-//   }, 1000);
-// }
-
-// updateClock();
-
-// //weather api
-
-// let weather = {
-//   apikey : "2d25e0adccacbedbb6df358d16284d8b",
-//   getWeather : function(citiy){
-//     fetch("https://api.openweathermap.org/data/2.5/weather?q="+citiy+"&appid="+ this.apikey)
-//     .then(response => response.json())
-//     .then(data => this.displayWeather(data));
-//   },
-
-//   displayWeather : function(data){
-// let {name} = data;
-// let {icon,description} = data.weather[0];
-// let {temp,humidity} = data.main;
-// let {speed} = data.wind;
-// console.log(name,icon,description,temp,humidity,speed);
-// document.getElementById("town").innerText ="Location :     " + name;
-// //document.getElementById("icon").src = " http://openweathermap.org/img/wn/"+icon+"2x.png";
-// document.getElementById("temp").innerText = "Temperature : " +temp;
-// document.getElementById("humidity").innerText ="Humidity :  "+ humidity;
-// document.getElementById("speed").innerText ="Wind Speed :" + speed;
-
-//   }
-// }
-//var url ="http://localhost:8090/iserver/services/map-SUSL_WS/rest/maps/powercut_region%40power_cut_data";
-var url2 =
-  "http://localhost:8090/iserver/services/map-SUSL_WS/rest/maps/tower_location%40signal_issues";
-//var url1 ="http://localhost:8090/iserver/services/map-SUSL_WS/rest/maps/powercut_region%40power_cut_data1";
+var signal_issue_region =
+  "http://localhost:8090/iserver/services/map-SUSL_WS/rest/maps/signal_region%40signal_isses_regions";
+  
+var student_loc =
+"http://localhost:8090/iserver/services/map-SUSL_WS/rest/maps/tower_location%40signal_issues";
 
 var resultLayer;
 let s_name, s_humidity, s_speed;
-var Style1 = new ol.style.Style({
-  image: new ol.style.Circle({
-    fill: new ol.style.Fill({
-      color: "green",
-    }),
-
-    radius: 5,
+var Style1 =  new ol.style.Style({
+  stroke: new ol.style.Stroke({
+    color: 'blue',
+    width: 3
   }),
-});
+  fill: new ol.style.Fill({
+    color: 'rgba(0, 0, 255, 0.1)'
+  })
+})
 var Style2 = new ol.style.Style({
-    image: new ol.style.Circle({
-        fill: new ol.style.Fill({
-          color: "red",
-        }),
-    
-        radius: 5,
-      }),
-});
+  stroke: new ol.style.Stroke({
+    color: 'red',
+    width: 3
+  }),
+  fill: new ol.style.Fill({
+    color: 'rgba(0, 0, 255, 0.1)'
+  })
+})
 
 var Style3 = new ol.style.Style({
-    image: new ol.style.Circle({
-        fill: new ol.style.Fill({
-          color: "yellow",
-        }),
-    
-        radius: 5,
-      }),
-});
+  stroke: new ol.style.Stroke({
+    color: 'green',
+    width: 3
+  }),
+  fill: new ol.style.Fill({
+    color: 'rgba(0, 0, 255, 0.1)'
+  })
+})
 
-function query(e,style) {
+function query(e, style) {
   console.log(e);
 
   map.removeLayer(resultLayer);
   var param = new ol.supermap.QueryBySQLParameters({
     queryParams: {
-      name: "tower_location@signal_issues",
-      attributeFilter: "Department = '" + e + "'",
+      name: "signal_region@signal_isses_regions",
+      attributeFilter: "NAME_1 = '" + e + "'",
     },
   });
 
-  new ol.supermap.QueryService(url2).queryBySQL(
+  new ol.supermap.QueryService(signal_issue_region).queryBySQL(
     param,
     function (serviceResult) {
       console.log(serviceResult);
@@ -123,22 +58,11 @@ function query(e,style) {
         wrapX: false,
       });
       console.log(serviceResult.result.recordsets[0].features);
-    //   s_speed = 4;
-    //   if (s_speed < 3) {
-    //     resultLayer = new ol.layer.Vector({
-    //       source: vectorSource,
-    //       style: Style2,
-    //     });
-    //   } else if (s_speed > 3 && s_speed < 5) {
-    //     resultLayer = new ol.layer.Vector({
-    //       source: vectorSource,
-    //       style: Style1,
-    //     });
-    //   }
 
       resultLayer = new ol.layer.Vector({
-          source: vectorSource,
-          style: style,});
+        source: vectorSource,
+        style: style,
+      });
 
       map.addLayer(resultLayer);
     }
@@ -179,12 +103,40 @@ let signal = {
 
 function signalval(value) {
   signal.getsignal(`${value}`);
-  if(s_speed < 2){
-    query(value,Style1);
-  }else if(s_speed >= 2 && s_speed < 3 ){
-    query(value,Style3);
-  }else{
-    query(value,Style2);
+  if (s_speed < 2) {
+    query(value, Style1);
+  } else if (s_speed >= 2 && s_speed < 3) {
+    query(value, Style3);
+  } else {
+    query(value, Style2);
   }
-  
 }
+
+
+function get_allst() {
+  var param = new ol.supermap.QueryBySQLParameters({
+    queryParams: {
+      name: "tower_location@signal_issues",
+    },
+  });
+
+  new ol.supermap.QueryService(student_loc).queryBySQL(
+    param,
+    function (serviceResult) {
+      var vectorSource = new ol.source.Vector({
+        features: new ol.format.GeoJSON().readFeatures(
+          serviceResult.result.recordsets[0].features
+        ),
+        wrapX: false,
+      });
+      console.log(serviceResult.result.recordsets[0].features);
+      layer1 = new ol.layer.Vector({
+        source: vectorSource,
+        style: Style1,
+      });
+      map.addLayer(layer1);
+    }
+  );
+}
+
+get_allst();

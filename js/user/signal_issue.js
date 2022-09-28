@@ -1,3 +1,6 @@
+var district = document.getElementById("district_value").innerText;
+console.log(district);
+
 var resultLayer;
 var url =
   "http://localhost:8090/iserver/services/map-SUSL_WS/rest/maps/powercut_region%40power_cut_data";
@@ -31,36 +34,38 @@ map.addControl(new ol.supermap.control.ScaleLine());
 
 ///////////////styles/////////////////
 var Style1 = new ol.style.Style({
-  image: new ol.style.Circle({
-    fill: new ol.style.Fill({
-      color: "red",
-    }),
-
-    radius: 5,
+  stroke: new ol.style.Stroke({
+    color: 'green',
+    width: 3,
+  }),
+  fill: new ol.style.Fill({
+    color: 'rgba(0, 0, 255, 0.1)',
   }),
 });
 var Style2 = new ol.style.Style({
-  stroke: new Stroke({
-    color: "blue",
+  stroke: new ol.style.Stroke({
+    color: 'red',
     width: 3,
   }),
-  fill: new Fill({
-    color: "rgba(0, 0, 255, 0.6)",
+  fill: new ol.style.Fill({
+    color: 'rgba(0, 0, 255, 0.1)',
   }),
 });
 
 var Style3 = new ol.style.Style({
-  stroke: new Stroke({
-    color: "red",
+  stroke: new ol.style.Stroke({
+    color: 'yellow',
     width: 3,
   }),
-  fill: new Fill({
-    color: "rgba(255, 0, 255, 0.6)",
+  fill: new ol.style.Fill({
+    color: 'rgba(0, 0, 255, 0.1)',
   }),
 });
 
 /////////////////////////////////////
 //get weather
+
+
 
 let weather = {
   apikey: "2d25e0adccacbedbb6df358d16284d8b",
@@ -76,28 +81,75 @@ let weather = {
   },
 
   displayWeather: function (data) {
-    let { name } = data;
-    let { icon, description } = data.weather[0];
-    let { temp, humidity } = data.main;
-    let { speed } = data.wind;
-    console.log(name, icon, description, temp, humidity, speed);
-    document.getElementById("town").innerText = name;
+    // let { name } = data;
+    // let { icon, description } = data.weather[0];
+    // let { temp, humidity } = data.main;
+    var s_speed  = data.wind.speed;
+     
+    console.log(s_speed);
+    // document.getElementById("town").innerText = name;
     //document.getElementById("icon").src = " http://openweathermap.org/img/wn/"+icon+"2x.png";
     //document.getElementById("temp").innerText = temp;
-    document.getElementById("humidity").value = humidity;
+    // document.getElementById("humidity").value = humidity;
     //document.getElementById("speed").innerText = speed;
+    if (s_speed < 2) {
+      console.log("hi");
+      
+      query_signal_strength(district, Style1);
+    } else if (s_speed >= 2 && s_speed < 3) {
+      
+      query_signal_strength(district, Style3);
+    } else {
+     
+      query_signal_strength(district, Style2);
+    }
   },
 };
 /////////////////////////
 
 //query function
 
-function query(e) {
+// function query(e) {
+//   map.removeLayer(resultLayer);
+//   var param = new ol.supermap.QueryBySQLParameters({
+//     queryParams: {
+//       name: "powercut_region@power_cut_data#1",
+//       attributeFilter: `ID_1 == ${e}`,
+//     },
+//   });
+
+//   new ol.supermap.QueryService(url).queryBySQL(param, function (serviceResult) {
+//     var vectorSource = new ol.source.Vector({
+//       features: new ol.format.GeoJSON().readFeatures(
+//         serviceResult.result.recordsets[0].features
+//       ),
+//       wrapX: false,
+//     });
+
+//     if (hum_value > 50) {
+//       resultLayer = new ol.layer.Vector({
+//         source: vectorSource,
+//         style: Style3,
+//       });
+//     } else {
+//       resultLayer = new ol.layer.Vector({
+//         source: vectorSource,
+//         style: Style2,
+//       });
+//     }
+
+//     map.addLayer(resultLayer);
+//   });
+// }
+
+
+
+function query_signal_strength(e,style) {
   map.removeLayer(resultLayer);
   var param = new ol.supermap.QueryBySQLParameters({
     queryParams: {
       name: "powercut_region@power_cut_data#1",
-      attributeFilter: `ID_1 == ${e}`,
+      attributeFilter: "NAME_1 = '" + e + "'",
     },
   });
 
@@ -109,18 +161,18 @@ function query(e) {
       wrapX: false,
     });
 
-    if (hum_value > 50) {
-      resultLayer = new ol.layer.Vector({
-        source: vectorSource,
-        style: Style3,
-      });
-    } else {
-      resultLayer = new ol.layer.Vector({
-        source: vectorSource,
-        style: Style2,
-      });
-    }
+    resultLayer = new ol.layer.Vector({
+      source: vectorSource,
+      style: style,
+    });
 
     map.addLayer(resultLayer);
   });
 }
+
+
+
+weather.getWeather(district);
+
+ 
+

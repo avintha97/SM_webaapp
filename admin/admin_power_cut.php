@@ -26,7 +26,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
             <nav>
                 <ul>
                     <li><a href="" class="logo">
-                            <img src="../img/logo.jpg" alt="">
+                            <img src="../img/admin-pc.png" alt="">
                             <span class=""><?php echo $_SESSION['username']; ?></span>
                         </a></li>
                     <li><a href="home.php">
@@ -109,13 +109,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                                 </select>
                             </div>
                             <div class="display_std">
-                            <label for="">Visible Students :</label>
-                            <select name="" class="powercut_area" id="" onclick="query(this.value)">
-                                    <option value="1">A</option>
-                                    <option value="2">B</option>
-                                    <option value="3">C</option>
-                                    <option value="4">D</option>
-                                    <option value="5">E</option>
+                            <label for="">Show All Students :</label>
+                            <select name="" class="powercut_area" id="show_std" onclick="">
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+                                   
                                 </select>
                             </div>
 
@@ -127,7 +125,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
 
 
 
-        <script src="../js/user/power_cut.js"></script>
+        <script src="../js/admin/admin_powercut.js"></script>
         <script src="../js/common.js"></script>
     </body>
 

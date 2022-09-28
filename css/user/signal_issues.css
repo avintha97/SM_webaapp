@@ -261,8 +261,7 @@ nav ul li {
 }
 
 body {
-    background-image: url("../../img/geomatics.jpg");
-    background-size: cover;
+    background-color: rgb(230, 230, 230);
     overflow: hidden;
 
 
@@ -279,7 +278,7 @@ nav {
     bottom: 0;
     height: 100vh;
     left: 0;
-    background: rgba(0, 0, 0, 0.8);
+    background:  rgba(51, 153, 255,0.5);
 
     max-width: 280px;
     overflow: hidden;
@@ -330,7 +329,7 @@ nav ul li {
 
 a {
     position: relative;
-    color: rgb(245, 223, 174);
+    color: white;
     font-size: 14px;
     display: table;
     width: 280px;
@@ -357,7 +356,7 @@ nav .fas {
 }
 
 a:hover {
-    background: rgb(40, 40, 40);
+    background: rgb(0, 45, 179);
 
 }
 
