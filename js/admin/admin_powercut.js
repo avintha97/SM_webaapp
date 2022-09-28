@@ -1,13 +1,11 @@
-
-
 var resultLayer, layer1;
-
 
 var url =
   "http://localhost:8090/iserver/services/map-SUSL_WS/rest/maps/powercut_region%40power_cut_data";
-var student_loc ="http://localhost:8090/iserver/services/map-SUSL_WS/rest/maps/tower_location%40signal_issues";
+var student_loc =
+  "http://localhost:8090/iserver/services/map-SUSL_WS/rest/maps/tower_location%40signal_issues";
 
-  //var url2 ="http://localhost:8090/iserver/services/map-SUSL_WS/rest/maps/signal_region%40signal_isses_regions";
+//var url2 ="http://localhost:8090/iserver/services/map-SUSL_WS/rest/maps/signal_region%40signal_isses_regions";
 var map = new ol.Map({
   target: "map",
   controls: ol.control
@@ -19,18 +17,37 @@ var map = new ol.Map({
     projection: "EPSG:4326",
     multiWorld: true,
   }),
+  
 });
 var basemap = new ol.layer.Tile({
+  title:'Basemap',
   visible: true,
   source: new ol.source.OSM(),
 });
 
+var satelite_Layer = new ol.layer.Tile({
+  title:'Satelite Map',
+  source: new ol.source.XYZ({
+    attributions: ['Powered by Esri',
+                   'Source: Esri, DigitalGlobe, GeoEye, Earthstar Geographics, CNES/Airbus DS, USDA, USGS, AeroGRID, IGN, and the GIS User Community'],
+    attributionsCollapsible: false,
+    url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+    maxZoom: 23
+  })
+});
+
+map.addLayer(satelite_Layer);
 // var layer1 = new ol.layer.Tile({
 //   source: new ol.source.TileSuperMapRest({
 //     url: url1,
 //     wrapX: true,
 //   }),
 //   projection: "EPSG:4326",
+// });
+
+// var overlays = new ol.layer.Group({
+//   title: 'Overlays',
+//   layers: [basemap]
 // });
 
 ///////////////////////////////////////////////////////////////////
@@ -45,12 +62,12 @@ var Style1 = new ol.style.Style({
 });
 var Style2 = new ol.style.Style({
   fill: new ol.style.Fill({
-    color: 'rgba(255, 255, 255, 0.5)',//'#ffffff'
+    color: "rgba(255, 255, 255, 0.5)", //'#ffffff'
   }),
   stroke: new ol.style.Stroke({
-    color: '#ffcc33',
-    width: 4
-  })
+    color: "#ffcc33",
+    width: 4,
+  }),
 });
 
 map.addLayer(basemap);
@@ -85,6 +102,7 @@ function query(e) {
     console.log(serviceResult.result.recordsets[0].features);
 
     resultLayer = new ol.layer.Vector({
+      title:'powercut Area',
       source: vectorSource,
       style: Style2,
     });
@@ -108,37 +126,60 @@ if (hour >= 6 && hour <= 8) {
 }
 
 
-  
-
- function get_allst(){
   var param = new ol.supermap.QueryBySQLParameters({
     queryParams: {
       name: "tower_location@signal_issues",
     },
   });
-  
-  new ol.supermap.QueryService(student_loc).queryBySQL(param, function (serviceResult) {
-    var vectorSource = new ol.source.Vector({
-      features: new ol.format.GeoJSON().readFeatures(
-        serviceResult.result.recordsets[0].features
-      ),
-      wrapX: false,
-    });
-    console.log(serviceResult.result);
-    layer1 = new ol.layer.Vector({
-      source: vectorSource,
-      style: Style1,
-    });
-    map.addLayer(layer1);
-  });
- }
 
- get_allst();
-    
-  
+  new ol.supermap.QueryService(student_loc).queryBySQL(
+    param,
+    function (serviceResult) {
+      var vectorSource = new ol.source.Vector({
+        features: new ol.format.GeoJSON().readFeatures(
+          serviceResult.result.recordsets[0].features
+        ),
+        wrapX: false,
+      });
+      console.log(serviceResult.result);
+      layer1 = new ol.layer.Vector({
+        title:'view all students',
+        source: vectorSource,
+        style: Style1,
+      });
+      map.addLayer(layer1);
+    }
+  );
+
+
+
+ 
  
 
+var layerSwitcher = new ol.control.LayerSwitcher({
+  tipLabel: 'Legend',
+  activationMode : 'click',
+  startActive : false,
+  groupSelectStyle :'children'
+});
+map.addControl(layerSwitcher);
+function remove_lyr() {
+  layer1.getSource().clear();
+}
+//get_allst();
 
+// var source = new ol.source.Vector({wrapX: false});
+// var Lyr = new ol.layer.Vector({
+//    source: source
+// });
+
+function show_all_std(value) {
+  if (value == 1) {
+    get_allst();
+  } else if (value == 0) {
+    remove_allst();
+  }
+}
 
 // function showAll_std(value){
 //   if(value==1){
@@ -147,11 +188,6 @@ if (hour >= 6 && hour <= 8) {
 //     map.removeLayer(layer1);
 //   }
 // }
-
-
-
-
-
 
 //st_loc(username)
 
@@ -191,9 +227,9 @@ if (hour >= 6 && hour <= 8) {
 //     image : new ol.style.Circle({
 //         fill : new ol.style.Fill({
 //         color:'red'
-        
+
 //     }),
-    
+
 //     radius : 5
 //     }),
 //       });
@@ -201,11 +237,9 @@ if (hour >= 6 && hour <= 8) {
 
 //         fill : new ol.style.Fill({
 //             color:'green'
-        
-        
+
 //         }),
 //           });
-
 
 // map.addLayer(basemap);
 // //map.addLayer(layer1);
@@ -216,7 +250,6 @@ if (hour >= 6 && hour <= 8) {
 // //     hour = hour-12;
 // // }
 // // console.log(hour);
-
 
 // //query functions
 
@@ -236,7 +269,7 @@ if (hour >= 6 && hour <= 8) {
 //       ),
 //       wrapX: false,
 //     });
-    
+
 //     resultLayer = new ol.layer.Vector({
 //       source: vectorSource,
 //       style:Style2
@@ -259,14 +292,14 @@ if (hour >= 6 && hour <= 8) {
 //     //alert("this time no power cut!");
 //     //query(1);
 //   }
-  
+
 // var param = new ol.supermap.QueryBySQLParameters({
 //     queryParams: {
 //       name: "student_locations@power_cut_data"
-      
+
 //     },
 //   });
-  
+
 //   new ol.supermap.QueryService(url1).queryBySQL(param, function (serviceResult) {
 //     var vectorSource = new ol.source.Vector({
 //       features: new ol.format.GeoJSON().readFeatures(

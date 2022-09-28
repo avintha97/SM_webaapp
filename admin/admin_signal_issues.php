@@ -15,8 +15,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.9.0/css/ol.css" rel="stylesheet" />
         <link href='https://iclient.supermap.io/dist/ol/iclient-ol.min.css' rel='stylesheet' />
+        <link rel="stylesheet" href="../lyr_switcher/ol-layerswitcher-master/dist/ol-layerswitcher.css">
         <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.9.0/build/ol.js"></script>
         <script type="text/javascript" src="https://iclient.supermap.io/dist/ol/iclient-ol.min.js"></script>
+        <script src="../lyr_switcher/ol-layerswitcher-master/dist/ol-layerswitcher.js"></script>
         <link rel="stylesheet" href="../css/admin/admin_signal_issues.css">
         <title>Signal Isuues</title>
     </head>
