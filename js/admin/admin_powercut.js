@@ -3,7 +3,7 @@ var resultLayer, layer1;
 var url =
   "http://localhost:8090/iserver/services/map-SUSL_WS/rest/maps/powercut_region%40power_cut_data";
 var student_loc =
-  "http://localhost:8090/iserver/services/map-SUSL_WS/rest/maps/tower_location%40signal_issues";
+  "http://localhost:8090/iserver/services/map-SUSL_WS/rest/maps/T18ges_student_location%40st_location";
 
 //var url2 ="http://localhost:8090/iserver/services/map-SUSL_WS/rest/maps/signal_region%40signal_isses_regions";
 var map = new ol.Map({
@@ -128,7 +128,7 @@ if (hour >= 6 && hour <= 8) {
 
   var param = new ol.supermap.QueryBySQLParameters({
     queryParams: {
-      name: "tower_location@signal_issues",
+      name: "T18ges_student_location@st_location",
     },
   });
 

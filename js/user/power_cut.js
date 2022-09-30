@@ -7,7 +7,7 @@ var resultLayer;
 var url =
   "http://localhost:8090/iserver/services/map-SUSL_WS/rest/maps/powercut_region%40power_cut_data";
 var student_loc =
-  "http://localhost:8090/iserver/services/map-SUSL_WS/rest/maps/st_loc%40st_location";
+  "http://localhost:8090/iserver/services/map-SUSL_WS/rest/maps/T18ges_student_location%40st_location";
 var map = new ol.Map({
   target: "map",
   
@@ -19,8 +19,19 @@ var map = new ol.Map({
   }),
 });
 var basemap = new ol.layer.Tile({
+  title:'Basemap',
   visible: true,
   source: new ol.source.OSM(),
+});
+var satelite_Layer = new ol.layer.Tile({
+  title:'Satelite Map',
+  source: new ol.source.XYZ({
+    attributions: ['Powered by Esri',
+                   'Source: Esri, DigitalGlobe, GeoEye, Earthstar Geographics, CNES/Airbus DS, USDA, USGS, AeroGRID, IGN, and the GIS User Community'],
+    attributionsCollapsible: false,
+    url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+    maxZoom: 23
+  })
 });
 
 // var layer1 = new ol.layer.Tile({
@@ -52,8 +63,9 @@ var Style2 = new ol.style.Style({
 });
 
 map.addLayer(basemap);
+map.addLayer(satelite_Layer);
 //map.addLayer(layer1);
-map.addControl(new ol.supermap.control.ScaleLine());
+
 
 var hour = new Date().getHours();
 // if(hour>12){
@@ -83,6 +95,7 @@ function query(e) {
     console.log(serviceResult.result.recordsets[0].features);
 
     resultLayer = new ol.layer.Vector({
+      title:'Powercut Region',
       source: vectorSource,
       style: Style2,
     });
@@ -98,17 +111,17 @@ if (hour >= 6 && hour <= 8) {
   query(3);
 } else if (hour >= 12 && hour <= 15) {
   query(4);
-} else if (hour >= 15 && hour <= 24) {
+} else if (hour >= 15 && hour <= 18) {
   query(5);
 } else {
-  //alert("this time no power cut!");
-  //query(1);
+  alert("this time no power cut!");
+  
 }
 
 function st_loc(e){
   var param = new ol.supermap.QueryBySQLParameters({
     queryParams: {
-      name: "st_loc@st_location",
+      name: "T18ges_student_location@st_location",
       attributeFilter: "indexno = '" + e + "'",
     },
   });
@@ -122,6 +135,7 @@ function st_loc(e){
     });
     //console.log(serviceResult.result.recordsets[0].features);
     layer1 = new ol.layer.Vector({
+      title:'Student Location',
       source: vectorSource,
       style: Style1,
     });
@@ -130,5 +144,13 @@ function st_loc(e){
 }
 
 
-st_loc(username)
+st_loc(username);
 
+var layerSwitcher = new ol.control.LayerSwitcher({
+  tipLabel: "Legend",
+  activationMode: "click",
+  startActive: false,
+  groupSelectStyle: "children",
+});
+map.addControl(layerSwitcher);
+map.addControl(new ol.supermap.control.ScaleLine());

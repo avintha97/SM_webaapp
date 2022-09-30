@@ -2,7 +2,7 @@ var source = new ol.source.Vector({wrapX: false});
 var Lyr = new ol.layer.Vector({
    source: source
 });
-//map.addLayer(Lyr);
+
 var line,polygon;
 //Distance Measure Function
 function mesuredistance(){
@@ -17,7 +17,7 @@ function mesuredistance(){
     line.on('drawend', function () {
         var distanceMeasureParam = new ol.supermap.MeasureParameters(feature.getGeometry());
         new ol.supermap.MeasureService(url, {measureMode: ""}).measureDistance(distanceMeasureParam, function (serviceResult) {
-            alert(serviceResult.result.distance );
+            alert(serviceResult.result.distance +"m" );
         });
     });
 
@@ -38,7 +38,7 @@ function mesurearea(){
     polygon.on('drawend', function () {
         var areaMeasureParam = new ol.supermap.MeasureParameters(feature.getGeometry());
         new ol.supermap.MeasureService(url).measureArea(areaMeasureParam, function (serviceResult) {
-            alert(serviceResult.result.area );
+            alert(serviceResult.result.area + "sq meter" );
         });
     });
 

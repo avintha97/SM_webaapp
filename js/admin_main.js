@@ -58,7 +58,7 @@ let {temp,humidity} = data.main;
 let {speed} = data.wind;
 console.log(name,icon,description,temp,humidity,speed);
 document.getElementById("town").innerText ="Location :     " + name;
-//document.getElementById("icon").src = " http://openweathermap.org/img/wn/"+icon+"2x.png";
+
 document.getElementById("temp").innerText = "Temperature : " +temp;
 document.getElementById("humidity").innerText ="Humidity :  "+ humidity;
 document.getElementById("speed").innerText ="Wind Speed :" + speed;
@@ -81,11 +81,7 @@ let {icon,description} = data.weather[0];
 let {temp,humidity} = data.main;
 let {speed} = data.wind;
 console.log(name,icon,description,temp,humidity,speed);
-// document.getElementById("town").innerText ="Location :     " + name;
-// //document.getElementById("icon").src = " http://openweathermap.org/img/wn/"+icon+"2x.png";
-// document.getElementById("temp").innerText = "Temperature : " +temp;
-// document.getElementById("humidity").innerText ="Humidity :  "+ humidity;
-// document.getElementById("speed").innerText ="Wind Speed :" + speed;
+
 
   }
 }

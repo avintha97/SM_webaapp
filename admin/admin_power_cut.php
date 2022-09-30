@@ -16,112 +16,391 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
         <link href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.9.0/css/ol.css" rel="stylesheet" />
         <link href='https://iclient.supermap.io/dist/ol/iclient-ol.min.css' rel='stylesheet' />
         <link rel="stylesheet" href="../lyr_switcher/ol-layerswitcher-master/dist/ol-layerswitcher.css">
+        <style>
+            body {
+                margin: 0;
+                overflow: hidden;
+            }
+
+            .navbar {
+                overflow: hidden;
+                background-color: #111;
+            }
+
+            .navbar a {
+                float: right;
+                font-size: 16px;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                padding-bottom: 20px;
+            }
+
+            .dropdown {
+
+                float: right;
+                overflow: hidden;
+            }
+
+            .dropdown .dropbtn {
+                font-size: 16px;
+                border: none;
+                outline: none;
+                color: white;
+                padding: 14px 16px;
+                background-color: inherit;
+                font-family: inherit;
+                margin: 0;
+            }
+
+            .navbar a:hover,
+            .dropdown:hover .dropbtn {
+                background-color: red;
+            }
+
+            .dropdown-content {
+
+                display: none;
+                position: absolute;
+                background-color: #f9f9f9;
+                width: 20%;
+                right: 0px;
+                box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+                z-index: 1;
+            }
+
+            .dropdown-content a {
+                float: none;
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+                text-align: center;
+                min-width: 300px;
+            }
+
+            .dropdown-content a:hover {
+                background-color: #ddd;
+            }
+
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
+
+            /*side*/
+            .sidenav {
+                height: 100%;
+                width: 160px;
+                position: fixed;
+                z-index: 1;
+                top: 0;
+                left: 0;
+                background-color: #111;
+                overflow-x: hidden;
+                padding-top: 20px;
+            }
+
+            .sidenav a {
+                padding: 6px 8px 6px 16px;
+                text-decoration: none;
+                font-size: 15px;
+                color: #818181;
+                display: block;
+                padding-bottom: 20px;
+            }
+
+            .sidenav a:hover {
+                color: #f1f1f1;
+            }
+
+            .main {
+                margin-left: 160px;
+               
+                font-size: 15px;
+              
+                padding: 0px;
+            }
+
+            @media screen and (max-height: 450px) {
+                .sidenav {
+                    padding-top: 15px;
+                }
+
+                .sidenav a {
+                    font-size: 18px;
+                }
+            }
+
+            /*card*/
+            .card {
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+                max-width: 300px;
+                margin: auto;
+                text-align: center;
+                font-family: arial;
+            }
+
+            .price {
+                color: grey;
+                font-size: 22px;
+            }
+
+            .card button {
+                border: none;
+                outline: 0;
+                padding: 12px;
+                color: white;
+                background-color: #000;
+                text-align: center;
+                cursor: pointer;
+                width: 100%;
+                font-size: 18px;
+            }
+
+            .card button:hover {
+                opacity: 0.7;
+            }
+
+            /*flex*/
+            .flex-container {
+                display: flex;
+                flex-direction: row;
+                font-size: 30px;
+                text-align: center;
+            }
+
+            .flex-item-left {
+                background-color: #f1f1f1;
+                padding: 10px;
+                flex: 50%;
+            }
+
+            .flex-item-right {
+                background-color: #f1f1f1;
+                padding: 10px;
+                flex: 50%;
+            }
+
+            
+            @media (max-width: 800px) {
+                .flex-container {
+                    flex-direction: column;
+                }
+            }
+
+            
+            .avatar {
+                vertical-align: middle;
+                width: 75px;
+                height: 75px;
+                border-radius: 50%;
+            }
+
+            
+            .block {
+                display: block;
+                width: 100%;
+                border: none;
+                background-color: black;
+                color: white;
+                padding: 14px 28px;
+                font-size: 16px;
+                cursor: pointer;
+                text-align: center;
+            }
+
+            .block:hover {
+                background-color: black;
+                color: white;
+            }
+
+            #map {
+                height: 100vh;
+                width: 100%;
+                background-size: cover;
+            }
+
+            .toolset {
+                position: absolute;
+                top: 60px;
+                left: 225px;
+                z-index: 1000;
+                justify-content: space-evenly;
+
+            }
+
+            .panel {
+                display: flex;
+                justify-content: space-evenly;
+            }
+
+            .panel {
+                display: flex;
+                justify-content: space-evenly;
+                max-height: 40px;
+            }
+
+            .panel button {
+                padding: 5px;
+                margin: 3px;
+                padding: 3px;
+                cursor: pointer;
+                height: 30px;
+                width: 30px;
+                border-radius: 50%;
+                background-color: rgb(230, 230, 230);
+
+
+            }
+
+
+            .panel button {
+                padding: 5px;
+                margin: 3px;
+                padding: 3px;
+                cursor: pointer;
+
+            }
+
+            .query {
+                margin: 20px;
+            }
+
+
+            .powercut_area {
+                height: 25px;
+                width: 200px;
+                border-radius: 5px;
+                font-size: 15px;
+
+
+            }
+            .legend {
+                position: relative;
+                left: 950px;
+                top: 450px;
+               
+                padding: 10px;
+                opacity: 0.8;
+            }
+
+            .dot_low {
+                height: 10px;
+                width: 10px;
+                background-color: green;
+                border-radius: 50%;
+                display: inline-block;
+               
+
+            }
+
+            .dot_middle {
+                height: 10px;
+                width: 10px;
+                background-color: yellow;
+                border-radius: 50%;
+                display: inline-block;
+
+            }
+
+            .dot_high {
+                height: 10px;
+                width: 10px;
+                background-color: red;
+                border-radius: 50%;
+                display: inline-block;
+
+            }
+        </style>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.9.0/build/ol.js"></script>
         <script type="text/javascript" src="https://iclient.supermap.io/dist/ol/iclient-ol.min.js"></script>
         <script src="../lyr_switcher/ol-layerswitcher-master/dist/ol-layerswitcher.js"></script>
-        <link rel="stylesheet" href="../css/admin/admin_powercut.css">
+
         <title>Power Cuts</title>
     </head>
 
     <body>
-        <div class="container">
-            <nav>
-                <ul>
-                    <li><a href="" class="logo">
-                            <img src="../img/admin-pc.png" alt="">
-                            <span class=""><?php echo $_SESSION['username']; ?></span>
-                        </a></li>
-                    <li><a href="home.php">
-                            <i class="fas fa-user"></i>
-                            <span class="nav-item">Dashboard</span>
-                        </a></li>
-                    <li><a href="admin_power_cut.php">
-                            <i class="fas fa-power-off"></i>
-                            <span class="nav-item">Today Power Cut</span>
-                        </a></li>
-                    <li><a href="admin_signal_issues.php">
-                            <i class="fas fa-wifi"></i>
-                            <span class="nav-item">Today Signal Issues</span>
-                        </a></li>
-                    <li><a href="uni_area.php">
-                            <i class="fas fa-university"></i>
-                            <span class="nav-item">University Area</span>
-                        </a></li>
-                    <li><a href="../logout.php" class="logout">
-                            <i class="fas fa-sign-out"></i>
-                            <span class="nav-item">LOG OUT</span>
-                        </a></li>
-                </ul>
-            </nav>
-            <section class="main">
-
-                <div class="top">
-                    <h1>Today Power Cuts</h1>
 
 
+        <div class="sidenav">
+            <div style="padding-left:25%;"><img src="../img/user_info.jpg" alt="user_info" class="avatar">
+                <span class="" id="uname" style="color:white"><?php echo $_SESSION['username']; ?></span>
+                <span id="district_value" style="color:white"><?php echo $_SESSION['district']; ?></span>
+            </div>
 
+            <a href="home.php" style="padding-top: 50px;"><i class="fa fa-tachometer" style="padding-right: 15px;"></i>Dashboard</a>
 
-                    <i class="fas fa-user-cog"></i>
-                </div>
-
-                <div class="body">
-                    <div id="map">
-
-                    </div>
-                    <div>
-                        <div class="toolset">
-
-
-                            <div class="panel">
-
-                                <button type="button" id="distance" onclick="mesuredistance()">
-
-                                    <span> <i class="fa fa-compass" aria-hidden="true"></i></span>
-                                </button>
-
-
-
-                                <button type="button" id="area" onclick="mesurearea()">
-
-                                    <span> <i class="fa fa-window-close" aria-hidden="true"></i></span>
-                                </button>
-
-
-                                <button type="button" id="clear" onclick="cleardraw()">
-
-                                    <span> <i class="fa fa-trash" aria-hidden="true"></i></span>
-                                </button>
-
-
-                                <button type="button" id="fullscreen" onclick="fullview()">
-
-                                    <span> <i class="fa fa-arrows-alt" aria-hidden="true"></i></span>
-                                </button>
-
-                            </div>
-                            <br>
-                            <div class="query">
-                                <label for="">Choose Power Cut Area :</label>
-                                <select name="" class="powercut_area" id="" onclick="query(this.value)">
-                                    <option value="1">A</option>
-                                    <option value="2">B</option>
-                                    <option value="3">C</option>
-                                    <option value="4">D</option>
-                                    <option value="5">E</option>
-                                </select>
-                            </div>
-                            
-
-
-
-            </section>
+            <a href="admin_power_cut.php"><i class="fas fa-user" style="padding-right: 15px;"></i>Powercut isues</a>
+            <a href="admin_signal_issues.php"><i class="fas fa-power-off" style="padding-right: 15px;"></i>Signal Isues</a>
+            <a href="https://www.sab.ac.lk/geo/"><i class="fa fa-university" style="padding-right: 12px;"></i>Go to Web</a>
         </div>
 
+        <div class="navbar">
+
+            <div class="dropdown">
+                <button class="dropbtn">Profile
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <div style="padding-left: 40%;"><img src="../img/user_info.jpg" alt="Avatar" class="avatar"></div>
+                    <a href="../logout.php"> <button class="block">Logout</button></a>
+
+                </div>
+            </div>
+        </div>
+        <div class="main">
+
+            <div id="map">
+
+            </div>
+            <div class="toolset">
+                <div class="panel">
+                    <button type="button" id="distance" onclick="mesuredistance()">
+
+                        <span> <i class="fa fa-compass" aria-hidden="true"></i></span>
+                    </button>
+
+                    <button type="button" id="area" onclick="mesurearea()">
+
+                        <span> <i class="fa fa-window-close" aria-hidden="true"></i></span>
+                    </button>
+
+                    <button type="button" id="clear" onclick="cleardraw()">
+
+                        <span> <i class="fa fa-trash" aria-hidden="true"></i></span>
+                    </button>
+
+                    <button type="button" id="fullscreen" onclick="fullview()">
+
+                        <span> <i class="fa fa-arrows-alt" aria-hidden="true"></i></span>
+                    </button>
+
+                    <div class="legend">
+                        <h2>legend</h2>
+                        <h3><span id="low" class="dot_low"></span>low condition</h3>
+                        <h3><span id="mid" class="dot_middle"></span>middle condition</h3>
+                        <h3><span id="high" class="dot_high"></span>high condition</h3>
+                    </div>
 
 
 
-        <script src="../js/admin/admin_powercut.js"></script>
-        <script src="../js/common.js"></script>
+
+
+                </div>
+
+                <div class="query">
+                    <label for="">Choose Power Cut Area :</label>
+                    <select name="" class="powercut_area" id="" onclick="query(this.value)">
+                        <option value="1">A</option>
+                        <option value="2">B</option>
+                        <option value="3">C</option>
+                        <option value="4">D</option>
+                        <option value="5">E</option>
+                    </select>
+                </div>
+                <script src="../js/admin/admin_powercut.js"></script>
+                <script src="../js/common.js"></script>
     </body>
 
     </html>

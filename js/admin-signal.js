@@ -8,7 +8,7 @@ var resultLayer;
 let s_name, s_humidity, s_speed;
 var Style1 =  new ol.style.Style({
   stroke: new ol.style.Stroke({
-    color: 'blue',
+    color: 'yellow',
     width: 3
   }),
   fill: new ol.style.Fill({
@@ -84,22 +84,14 @@ let signal = {
 
   displaysignal: function (data) {
     s_name = data.name;
-    //let {icon,description} = data.weather[0];
+    
     s_humidity = data.main;
     s_speed = data.wind.speed;
-    console.log(s_name);
-    console.log(s_speed);
-    // document.getElementById("town").innerText ="Location :     " + name;
-    // //document.getElementById("icon").src = " http://openweathermap.org/img/wn/"+icon+"2x.png";
-    // document.getElementById("temp").innerText = "Temperature : " +temp;
-    // document.getElementById("humidity").innerText ="Humidity :  "+ humidity;
-    // document.getElementById("speed").innerText ="Wind Speed :" + speed;
+    
+    
   },
 };
 
-// function weathervalue(value){
-//     weather.getWeather(`${value}`);
-// }
 
 function signalval(value) {
   signal.getsignal(`${value}`);

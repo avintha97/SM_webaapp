@@ -17,55 +17,59 @@ var map = new ol.Map({
   }),
 });
 var basemap = new ol.layer.Tile({
+  title:'Basemap',
   visible: true,
   source: new ol.source.OSM(),
 });
+var satelite_Layer = new ol.layer.Tile({
+  title:'Satelite Map',
+  source: new ol.source.XYZ({
+    attributions: ['Powered by Esri',
+                   'Source: Esri, DigitalGlobe, GeoEye, Earthstar Geographics, CNES/Airbus DS, USDA, USGS, AeroGRID, IGN, and the GIS User Community'],
+    attributionsCollapsible: false,
+    url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+    maxZoom: 23
+  })
+});
 
-//    var layer1 = new ol.layer.Tile({
-//        source: new ol.source.TileSuperMapRest({
-//            url: url,
-//            wrapX:true
-//        }),
-//        projection: 'EPSG:4326'
-//    });
+
 map.addLayer(basemap);
-//map.addLayer(layer1);
+map.addLayer(satelite_Layer);
+
 map.addControl(new ol.supermap.control.ScaleLine());
 
 ///////////////styles/////////////////
 var Style1 = new ol.style.Style({
   stroke: new ol.style.Stroke({
-    color: 'green',
+    color: "green",
     width: 3,
   }),
   fill: new ol.style.Fill({
-    color: 'rgba(0, 0, 255, 0.1)',
+    color: "rgba(0, 0, 255, 0.1)",
   }),
 });
 var Style2 = new ol.style.Style({
   stroke: new ol.style.Stroke({
-    color: 'red',
+    color: "red",
     width: 3,
   }),
   fill: new ol.style.Fill({
-    color: 'rgba(0, 0, 255, 0.1)',
+    color: "rgba(0, 0, 255, 0.1)",
   }),
 });
 
 var Style3 = new ol.style.Style({
   stroke: new ol.style.Stroke({
-    color: 'yellow',
+    color: "yellow",
     width: 3,
   }),
   fill: new ol.style.Fill({
-    color: 'rgba(0, 0, 255, 0.1)',
+    color: "rgba(0, 0, 255, 0.1)",
   }),
 });
 
 /////////////////////////////////////
 //get weather
-
-
 
 let weather = {
   apikey: "2d25e0adccacbedbb6df358d16284d8b",
@@ -81,70 +85,28 @@ let weather = {
   },
 
   displayWeather: function (data) {
-    // let { name } = data;
-    // let { icon, description } = data.weather[0];
-    // let { temp, humidity } = data.main;
-    var s_speed  = data.wind.speed;
-     
+    
+    var s_speed = data.wind.speed;
+
     console.log(s_speed);
-    // document.getElementById("town").innerText = name;
-    //document.getElementById("icon").src = " http://openweathermap.org/img/wn/"+icon+"2x.png";
-    //document.getElementById("temp").innerText = temp;
-    // document.getElementById("humidity").value = humidity;
-    //document.getElementById("speed").innerText = speed;
+    
     if (s_speed < 2) {
       console.log("hi");
-      
+
       query_signal_strength(district, Style1);
     } else if (s_speed >= 2 && s_speed < 3) {
-      
       query_signal_strength(district, Style3);
     } else {
-     
       query_signal_strength(district, Style2);
     }
   },
 };
-/////////////////////////
+
 
 //query function
 
-// function query(e) {
-//   map.removeLayer(resultLayer);
-//   var param = new ol.supermap.QueryBySQLParameters({
-//     queryParams: {
-//       name: "powercut_region@power_cut_data#1",
-//       attributeFilter: `ID_1 == ${e}`,
-//     },
-//   });
 
-//   new ol.supermap.QueryService(url).queryBySQL(param, function (serviceResult) {
-//     var vectorSource = new ol.source.Vector({
-//       features: new ol.format.GeoJSON().readFeatures(
-//         serviceResult.result.recordsets[0].features
-//       ),
-//       wrapX: false,
-//     });
-
-//     if (hum_value > 50) {
-//       resultLayer = new ol.layer.Vector({
-//         source: vectorSource,
-//         style: Style3,
-//       });
-//     } else {
-//       resultLayer = new ol.layer.Vector({
-//         source: vectorSource,
-//         style: Style2,
-//       });
-//     }
-
-//     map.addLayer(resultLayer);
-//   });
-// }
-
-
-
-function query_signal_strength(e,style) {
+function query_signal_strength(e, style) {
   map.removeLayer(resultLayer);
   var param = new ol.supermap.QueryBySQLParameters({
     queryParams: {
@@ -162,6 +124,7 @@ function query_signal_strength(e,style) {
     });
 
     resultLayer = new ol.layer.Vector({
+      title:'Powercut Area',
       source: vectorSource,
       style: style,
     });
@@ -170,9 +133,11 @@ function query_signal_strength(e,style) {
   });
 }
 
-
-
 weather.getWeather(district);
-
- 
-
+var layerSwitcher = new ol.control.LayerSwitcher({
+  tipLabel: "Legend",
+  activationMode: "click",
+  startActive: false,
+  groupSelectStyle: "children",
+});
+map.addControl(layerSwitcher);
